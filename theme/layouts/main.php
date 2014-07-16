@@ -3,29 +3,43 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" <?php language_attributes(); ?>> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" <?php language_attributes(); ?>> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" <?php language_attributes(); ?>> <!--<![endif]-->
-<html class="no-js" <?php language_attributes(); ?>>
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title><?php wp_title('|', true, 'right'); ?></title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <?php wp_head(); ?>
 
-  <link rel="alternate" type="application/rss+xml" title="<?php echo get_bloginfo('name'); ?> Feed" href="<?php echo esc_url(get_feed_link()); ?>">
+  <link rel="alternate" type="application/rss+xml" title="<?php echo get_bloginfo('name'); ?> Feed" href="<?php echo home_url(); ?>/feed/">
 </head>
 <body <?php body_class(); ?>>
+
   <!--[if lt IE 7]><div class="alert"><?php _e('You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.', 'roots'); ?></div><![endif]-->
 
-  <?php do_action('get_header'); get_template_part('partials/header'); ?>
+  <header class="banner" role="banner">
+    <div class="header-contain">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <a href="/"><h1 class="brand"><?php bloginfo('name'); ?></h1></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <?php get_template_part('partials/nav'); ?>
+      </div>
+    </div>
+  </header>
 
   <div class="wrap container" role="document">
     <div class="content row">
-      <main class="main" role="main">
+      <div class="main" role="main">
         <?php whippet_template(); ?>
-      </main><!-- /.main -->
-    </div><!-- /.content -->
-  </div><!-- /.wrap -->
+      </div>
+    </div>
+  </div>
 
   <footer class="content-info" role="contentinfo">
     <div class="container">
