@@ -1,150 +1,168 @@
-//
-// == Installation ==
-//
-// Install the grunt command-line tool (-g puts it in /usr/local/bin):
-// % sudo npm install -g grunt-cli
-//
-// Install all the packages required to build this:
-// (Packages will be installed in ./node_modules - don't accidentally commit this)
-// % cd wp-content/themes/theme-name
-// % npm install
-//
-// == Building ==
-//
-// % grunt
-//
-// Watch for changes:
-// % grunt watch
-//
-// Compress images (not done by the above tasks):
-// % grunt img
-//
-
 module.exports = function (grunt) {
-
     'use strict';
+
+    grunt.loadTasks('tasks');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+
+    grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-img');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    //grunt.loadNpmTasks('grunt-phpmd');
+
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
-        //
-        // grunt-environment
-        //
-        // Maintains .grunt/environment, which is used to switch between dev and prod
-        // configurations in various tasks, below.
-        //
-
-        environment: {
-            default: 'development',
-            environments: [ 'development', 'production'],
-        },
-
-
-        //
-        // grunt-contrib-less
-        // Compiles LESS into CSS.
-        // TODO: what's the difference between dev and prod?
-
         less: {
+            '': 'development',
+
             production: {
                 files: {
                     '../templates/assets/main.min.css': [
                         'bower_components/bootstrap/css/bootstrap.min.css',
-                        '../assets/less/main.less',
-                    ],
+                        '../assets/less/main.less'
+                    ]
                 },
 
                 options: {
                     strictUnits: true,
                     compress: true
-                },
+                }
             },
             development: {
                 files: {
                     '../templates/assets/main.min.css': [
                         'bower_components/bootstrap/css/bootstrap.min.css',
-                        '../assets/less/main.less',
-                    ],
+                        '../assets/less/main.less'
+                    ]
                 },
 
                 options: {
                     strictUnits: true,
                     sourceMap: true,
                     dumpLineNumbers: true
-                },
-            },
+                }
+            }
         },
 
-        /*,
 
         uglify: {
-            dist: {
-                options: {
-                    preserveComments: 'some',
-                    compress: false,
-                    sourceMap: 'build/main.min.js.map',
-                    sourceMappingURL: 'main.min.js.map',
-                    sourceMapRoot: '../',
-                },
-                files: {
-                    'build/main.min.js': [
-                        'bower_components/jquery-ui/ui/jquery.ui.core.js',
-                        'bower_components/jquery-ui/ui/jquery.ui.datepicker.js',
-                        'assets/js/plugins/*.js',
-                        'assets/js/main.js',
-                    ],
-                },
-            },
-        },
+           '': 'development',
 
-        copy: {
-            dist: {
-                files: [
-                    {
-                        src: [
-                            'bower_components/jquery/jquery.min.*',
-                            'bower_components/bootstrap/js/dropdown.js',
-                            'bower_components/bootstrap/js/carousel.js',
-                            'bower_components/bootstrap/js/transition.js',
-                            'bower_components/bootstrap/bootstrap/css/bootstrap.min.css',
-                            'bower_components/respond/respond.min.js',
-                            'bower_components/jquery-ui/themes/base/jquery-ui.css',
-                            'bower_components/jquery-ui/themes/base/images/*',
-                            'bower_components/date-polyfill/date-polyfill.min.js',
-                            'bower_components/jquery-ui/themes/eggplant/jquery-ui.min.css',
-                            'bower_components/jquery-ui/themes/eggplant/images/*',
-                        ],
-                        dest: 'build/',
-                    },
-                ],
-            },
-        },
+           production: {
+               options: {
+                   preserveComments: 'none'
+               },
+               files: {
+                   '../templates/assets/main.min.js': [
+                       '../assets/js/plugins/*.js',
+                       '../assets/js/main.js'
+                   ],
+                   '../templates/assets/lib/modernizr.min.js': [
+                       'bower_components/modernizr/feature-detects/*.js',
+                       'bower_components/modernizr/modernizr.js'
+                   ]
+               }
+           },
+           development: {
+               options: {
+                   preserveComments: 'all',
+                   compress: false,
+                   beautify: true,
+                   sourceMap: true
+               },
+               files: {
+                   '../templates/assets/main.min.js': [
+                       '../assets/js/plugins/*.js',
+                       '../assets/js/main.js'
+                   ],
+                   '../templates/assets/lib/modernizr.min.js': [
+                       'bower_components/modernizr/feature-detects/*.js',
+                       'bower_components/modernizr/modernizr.js'
+                   ]
+               }
+           }
+       },
 
         img: {
             dist: {
-                src: 'assets/img',
-            },
+                src: '../assets/img',
+                dest: '../templates/assets/img'
+            }
         },
 
         _watch: {
-            css: {
-                files: ['assets/css/** /*.less'],
-                tasks: ['less'],
+            less: {
+                files: ['../assets/less/*.less', '../assets/less/*/*.less'],
+                tasks: ['less']
             },
             js: {
-                files: ['assets/js/** /*.js'],
-                tasks: ['uglify'],
-            },
+                files: ['../assets/js/main.js', '../assets/js/plugins/*.js'],
+                tasks: ['jshint', 'uglify']
+            }
         },
-        */
+
+        // TODO: because Grunt's working dir is vendor, clean refuses to do this unless you say --force
+        // I am not specifying force option here, because dragons
+        clean: ['../templates/assets/*'],
+
+        /*phpmd: {
+          '': 'development',
+
+          options: {
+            rulesets: 'codesize,unusedcode,naming',
+            bin: '~/Projects/tools/phpmd/src/bin/phpmd',
+            reportFormat: 'text'
+          },
+
+          development: {
+            dir: "../"
+          }
+        },*/
+
+        jshint: {
+          '': 'development',
+
+          options: {
+            bitwise: true,
+            curly: true,
+            es3: true,
+            latedef: true,
+            noarg: true,
+            nonbsp: true,
+            nonew: true,
+            undef: true,
+            unused: true,
+
+            browser: true,
+            jquery: true,
+            node: true
+          },
+
+          development: {
+            files: {
+              src: ['Gruntfile.js', '../assets/js/main.js', '../assets/js/plugins/*.js']
+            },
+            options: {
+              devel: true
+            }
+          },
+
+          production: {
+            files: {
+              src: ['Gruntfile.js', '../assets/js/main.js', '../assets/js/plugins/*.js']
+            },
+            options: {
+              devel: false
+            }
+          }
+        }
     });
 
-    grunt.loadNpmTasks('grunt-environment');
-    grunt.loadNpmTasks('grunt-contrib-less');
-    /*grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-img');
+    var env = grunt.option('env') || 'development';
 
     grunt.registerTask('bower-install', 'Installs bower deps', function () {
         var done = this.async(),
@@ -156,16 +174,15 @@ module.exports = function (grunt) {
     });
 
     grunt.renameTask('watch', '_watch');
+
     grunt.registerTask('watch', [
         'default',
-        '_watch',
-    ]);
-*/
-    grunt.registerTask('default', [
-        //'bower-install',
-     // 'copy',
-        'less:' + grunt.environment(),
-     // 'uglify',
+        '_watch'
     ]);
 
+    grunt.registerTask('default', [
+        'bower-install',
+        'less:' + env,
+        'uglify:'+ env
+    ]);
 };
