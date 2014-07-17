@@ -2,12 +2,15 @@
 
 // TODO: refactor me SO HARD
 
-require(__DIR__ . '/whippet/whippet.php');
+require(__DIR__.'/whippet/whippet.php');
 //require(__DIR__.'/../vendor/vendor.phar');
+
+include(__DIR__.'/assets/scripts.php');
+include(__DIR__.'/assets/media.php');
+
 
 include(__DIR__.'/helpers.php');
 include(__DIR__.'/feeds.php');
-include(__DIR__.'/assets.php');
 include(__DIR__.'/acf.php');
 include(__DIR__.'/thumbnails.php');
 include(__DIR__.'/pagination.php');
