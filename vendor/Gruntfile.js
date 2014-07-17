@@ -64,6 +64,9 @@ module.exports = function (grunt) {
                    '../templates/assets/lib/modernizr.min.js': [
                        'bower_components/modernizr/feature-detects/*.js',
                        'bower_components/modernizr/modernizr.js'
+                   ],
+                    '../templates/assets/lib/jquery.min.js': [
+                       'bower_components/jquery/jquery.js'
                    ]
                }
            },
@@ -82,6 +85,9 @@ module.exports = function (grunt) {
                    '../templates/assets/lib/modernizr.min.js': [
                        'bower_components/modernizr/feature-detects/*.js',
                        'bower_components/modernizr/modernizr.js'
+                   ],
+                    '../templates/assets/lib/jquery.min.js': [
+                       'bower_components/jquery/jquery.js'
                    ]
                }
            }

@@ -10,9 +10,6 @@
           the_post_thumbnail('large');
          endif; ?>
       <?php the_content(); ?>
-      <aside class="footnotes">
-        <?php the_footnotes(); ?>
-      </aside>
     </div>
   </div>
 
