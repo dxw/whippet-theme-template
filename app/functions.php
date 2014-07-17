@@ -19,18 +19,18 @@ require __DIR__ . '/core_behaviour.php';
  * Theme behaviour and template tags
  */
 
-require __DIR__ . '/scripts.php';
-require __DIR__ . '/media.php';
-require __DIR__ . '/menus.php';
-require __DIR__ . '/widgets.php';
-require __DIR__ . '/helpers.php';
-require __DIR__ . '/pagination.php';
-require __DIR__ . '/titles.php';
+require __DIR__ . '/theme/scripts.php';
+require __DIR__ . '/theme/media.php';
+require __DIR__ . '/theme/menus.php';
+require __DIR__ . '/theme/widgets.php';
+require __DIR__ . '/theme/helpers.php';
+require __DIR__ . '/theme/pagination.php';
+require __DIR__ . '/theme/titles.php';
 
 
 /*
  * Post types and additional fields
  */
 
-require __DIR__ . '/post_types.php';
-require __DIR__ . '/custom_fields.php';
+require __DIR__ . '/posts/post_types.php';
+require __DIR__ . '/posts/custom_fields.php';
