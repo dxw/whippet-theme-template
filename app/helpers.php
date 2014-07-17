@@ -8,7 +8,7 @@ function ga_tracking() { ?>
   <script type="text/javascript">
 
     var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', '<?php echo get_field('ua_code', 'option'); ?>']);
+    _gaq.push(['_setAccount', 'UA124545']);
     _gaq.push(['_trackPageview']);
 
     (function() {

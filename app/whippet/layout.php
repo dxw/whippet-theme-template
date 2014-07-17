@@ -31,7 +31,7 @@ class Layout {
   static function apply($wordpress_template) {
     \Whippet::message("Template: " . $wordpress_template);
 
-    self::$wordpress_template = dirname($wordpress_template) . "/templates/" . basename($wordpress_template);
+    self::$wordpress_template = dirname($wordpress_template) . "/" . basename($wordpress_template);
     self::$base = basename(self::$wordpress_template, '.php');
 
     if (self::$base === 'index') {
@@ -42,4 +42,4 @@ class Layout {
   }
 }
 
-//add_filter('template_include', array('Whippet\Layout', 'apply'), 99);
+add_filter('template_include', array('Whippet\Layout', 'apply'), 99);
