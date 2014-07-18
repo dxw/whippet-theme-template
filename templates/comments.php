@@ -1,10 +1,10 @@
 <?php
-
   if (post_password_required()) { // TODO: Put me somewhere else
     return;
   }
 
  if (have_comments()) : ?>
+
   <section id="comments" class="col-md-12">
     <h3><?php printf(_n('One Response to &ldquo;%2$s&rdquo;', '%1$s Responses to &ldquo;%2$s&rdquo;', get_comments_number(), 'roots'), number_format_i18n(get_comments_number()), get_the_title()); ?></h3>
 

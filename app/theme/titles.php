@@ -20,7 +20,8 @@ function template_title() {
 
     return __('Latest Posts', 'roots');
   }
-  elseif (is_archive()) {
+
+  if (is_archive()) {
     $term = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy'));
 
     if ($term) {

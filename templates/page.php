@@ -1,7 +1,5 @@
-<div>
-  <?php while (have_posts()) : the_post(); ?>
+  <?php
 
-    <?php get_template_part('partials/page'); ?>
-
-  <?php endwhile; ?>
-</div>
+  while (have_posts()) : the_post();
+    get_template_part('partials/page');
+  endwhile;

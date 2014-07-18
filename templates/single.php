@@ -1,7 +1,7 @@
-<div>
-  <?php while (have_posts()) : the_post(); ?>
+<?php
 
-    <?php get_template_part('partials/article'); ?>
+while (have_posts()) : the_post();
+  get_template_part('partials/article');
 
-  <?php endwhile; ?>
-</div>
+  comments_template('comments.php');
+endwhile;

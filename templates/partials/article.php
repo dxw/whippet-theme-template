@@ -8,17 +8,9 @@
   <div class="entry col-md-9">
     <div class="entry-contain">
       <?php if(has_post_thumbnail()) :
-          the_post_thumbnail('large');
-         endif; ?>
+        the_post_thumbnail('large');
+      endif; ?>
       <?php the_content(); ?>
     </div>
   </div>
-
-  <aside id="sidebar" class="col-md-3">
-    <div class="side-contain">
-      <?php get_template_part('partials/category-list'); ?>
-    </div>
-  </aside>
-
-  <?php get_template_part('comments'); ?>
 </article>

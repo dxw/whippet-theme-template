@@ -6,6 +6,7 @@
 
 require __DIR__ . '/lib/whippet/whippet.php';
 require __DIR__ . '/lib/roots_walker_comment.class.php';
+require __DIR__ . '/lib/pagination.php';
 
 
 /*
@@ -24,8 +25,6 @@ require __DIR__ . '/theme/media.php';
 require __DIR__ . '/theme/menus.php';
 require __DIR__ . '/theme/widgets.php';
 require __DIR__ . '/theme/helpers.php';
-require __DIR__ . '/theme/pagination.php';
-require __DIR__ . '/theme/titles.php';
 
 
 /*

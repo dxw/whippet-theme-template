@@ -1,5 +1,4 @@
-<article <?php post_class('article article-list-item'); ?>>
-
+<article <?php post_class('article article-list-item'); ?>
   <header class="col-md-12">
     <h1 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
     <?php get_template_part('partials/entry-meta'); ?>
@@ -14,12 +13,4 @@
       <a href="<?php the_permalink(); ?>" class="btn">Read more</a>
     </div>
   </div>
-
-  <aside id="sidebar" class="col-md-3">
-    <div class="side-contain">
-      <?php get_template_part('partials/category-list'); ?>
-    </div>
-  </aside>
-
 </article>
-
