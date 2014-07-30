@@ -29,8 +29,6 @@ class Layout {
   }
 
   static function apply($wordpress_template) {
-    \Whippet::message("Template: " . $wordpress_template);
-
     self::$wordpress_template = dirname($wordpress_template) . "/" . basename($wordpress_template);
     self::$base = basename(self::$wordpress_template, '.php');
 
