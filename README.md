@@ -1,5 +1,8 @@
 === About this theme ===
 
+This is the base theme for use in Whippet applications. You don't have to use it, but they play nice together.
+
+
 == Installation ==
 
 === How to use this theme ===
