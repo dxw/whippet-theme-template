@@ -3,8 +3,7 @@ module.exports = function (grunt) {
 
     grunt.loadTasks('tasks');
     grunt.loadNpmTasks('grunt-contrib-watch');
-
-    grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-img');
@@ -16,38 +15,32 @@ module.exports = function (grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
-        less: {
-            '': 'development',
+        sass: {
+          '': 'development',
 
-            production: {
-                files: {
-                    '../templates/assets/main.min.css': [
-                        'bower_components/bootstrap/css/bootstrap.min.css',
-                        '../assets/less/main.less'
-                    ]
-                },
-
-                options: {
-                    strictUnits: true,
-                    compress: true
-                }
+          development: {
+            options: {
+              style: 'expanded',
+              sourcemap: 'auto',
+              trace: true,
+              debugInfo: true,
+              lineNumbers: true
             },
-            development: {
-                files: {
-                    '../templates/assets/main.min.css': [
-                        'bower_components/bootstrap/css/bootstrap.min.css',
-                        '../assets/less/main.less'
-                    ]
-                },
-
-                options: {
-                    strictUnits: true,
-                    sourceMap: true,
-                    dumpLineNumbers: true
-                }
+            files: {
+              'main.css': 'main.scss'
             }
-        },
+          },
 
+          production: {
+            options: {
+              style: 'compressed',
+              sourcemap: 'none',
+            },
+            files: {
+              'main.css': '../assets/scss/main.scss'
+            }
+          }
+        },
 
         uglify: {
            '': 'development',
@@ -102,8 +95,8 @@ module.exports = function (grunt) {
 
         _watch: {
             less: {
-                files: ['../assets/less/*.less', '../assets/less/*/*.less'],
-                tasks: ['less']
+                files: ['../assets/scss/*.scss', '../assets/scss/*/*.scss'],
+                tasks: ['sass']
             },
             js: {
                 files: ['../assets/js/main.js', '../assets/js/plugins/*.js'],
@@ -188,7 +181,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('default', [
         'bower-install',
-        'less:' + env,
+        'sass:' + env,
         'uglify:'+ env
     ]);
 };
