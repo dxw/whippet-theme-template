@@ -27,7 +27,7 @@ module.exports = function (grunt) {
               lineNumbers: true
             },
             files: {
-              'main.css': 'main.scss'
+              '../templates/assets/main.min.css': '../assets/scss/main.scss'
             }
           },
 
