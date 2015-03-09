@@ -1,15 +1,9 @@
-=== About this theme ===
+## About this theme
 
 This is the base theme for use in Whippet applications. You don't have to use it, but they play nice together.
 
 
-== Installation ==
-
-=== How to use this theme ===
-
-== TODO ==
-
-* Actually run this theme
+## Roadmap 
 
 * H: Whippet should generate a domain for internalisation - the domain is currently 'roots'?
 * H: Check that we have everything in /app
