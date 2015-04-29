@@ -1,3 +1,8 @@
+# Health warning
+
+This theme is not finished yet. We'd love it if you want to have a play and give us your thoughts - and pull requests gratefully received. But probably best to tread carefully.
+
+
 ## About this theme
 
 This is the base theme for use in Whippet applications. You don't have to use it, but they play nice together.
