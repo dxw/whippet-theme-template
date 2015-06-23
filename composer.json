@@ -1,0 +1,14 @@
+{
+    "name": "dxw/whippet-theme-template",
+    "homepage": "https://github.com/dxw/whippet-theme-template",
+    "type": "library",
+    "version": "0.1.0",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Harry Metcalfe",
+            "email": "harry@dxw.com",
+            "homepage": "https://www.dxw.com/"
+        }
+    ]
+}
