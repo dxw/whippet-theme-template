@@ -1,7 +1,7 @@
 module.exports = function (grunt) {
     'use strict';
 
-    grunt.loadTasks('tasks');
+    grunt.loadTasks('lib/tasks');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -27,7 +27,7 @@ module.exports = function (grunt) {
               lineNumbers: true
             },
             files: {
-              '../templates/assets/main.min.css': '../assets/scss/main.scss'
+              'templates/assets/main.min.css': 'assets/scss/main.scss'
             }
           },
 
@@ -37,7 +37,7 @@ module.exports = function (grunt) {
               sourcemap: 'none',
             },
             files: {
-              'main.css': '../assets/scss/main.scss'
+              'main.css': 'assets/scss/main.scss'
             }
           }
         },
@@ -50,15 +50,15 @@ module.exports = function (grunt) {
                    preserveComments: 'none'
                },
                files: {
-                   '../templates/assets/main.min.js': [
-                       '../assets/js/plugins/*.js',
-                       '../assets/js/main.js'
+                   'templates/assets/main.min.js': [
+                       'assets/js/plugins/*.js',
+                       'assets/js/main.js'
                    ],
-                   '../templates/assets/lib/modernizr.min.js': [
+                   'templates/assets/lib/modernizr.min.js': [
                        'bower_components/modernizr/feature-detects/*.js',
                        'bower_components/modernizr/modernizr.js'
                    ],
-                    '../templates/assets/lib/jquery.min.js': [
+                    'templates/assets/lib/jquery.min.js': [
                        'bower_components/jquery/jquery.js'
                    ]
                }
@@ -71,15 +71,15 @@ module.exports = function (grunt) {
                    sourceMap: true
                },
                files: {
-                   '../templates/assets/main.min.js': [
-                       '../assets/js/plugins/*.js',
-                       '../assets/js/main.js'
+                   'templates/assets/main.min.js': [
+                       'assets/js/plugins/*.js',
+                       'assets/js/main.js'
                    ],
-                   '../templates/assets/lib/modernizr.min.js': [
+                   'templates/assets/lib/modernizr.min.js': [
                        'bower_components/modernizr/feature-detects/*.js',
                        'bower_components/modernizr/modernizr.js'
                    ],
-                    '../templates/assets/lib/jquery.min.js': [
+                    'templates/assets/lib/jquery.min.js': [
                        'bower_components/jquery/jquery.js'
                    ]
                }
@@ -88,25 +88,23 @@ module.exports = function (grunt) {
 
         img: {
             dist: {
-                src: '../assets/img',
-                dest: '../templates/assets/img'
+                src: 'assets/img',
+                dest: 'templates/assets/img'
             }
         },
 
         _watch: {
             less: {
-                files: ['../assets/scss/*.scss', '../assets/scss/*/*.scss'],
+                files: ['assets/scss/*.scss', 'assets/scss/*/*.scss'],
                 tasks: ['sass']
             },
             js: {
-                files: ['../assets/js/main.js', '../assets/js/plugins/*.js'],
+                files: ['assets/js/main.js', 'assets/js/plugins/*.js'],
                 tasks: ['jshint', 'uglify']
             }
         },
 
-        // TODO: because Grunt's working dir is vendor, clean refuses to do this unless you say --force
-        // I am not specifying force option here, because dragons
-        clean: ['../templates/assets/*'],
+        clean: ['templates/assets/*'],
 
         /*phpmd: {
           '': 'development',
@@ -143,7 +141,7 @@ module.exports = function (grunt) {
 
           development: {
             files: {
-              src: ['Gruntfile.js', '../assets/js/main.js', '../assets/js/plugins/*.js']
+              src: ['Gruntfile.js', 'assets/js/main.js', 'assets/js/plugins/*.js']
             },
             options: {
               devel: true
@@ -152,7 +150,7 @@ module.exports = function (grunt) {
 
           production: {
             files: {
-              src: ['Gruntfile.js', '../assets/js/main.js', '../assets/js/plugins/*.js']
+              src: ['Gruntfile.js', 'assets/js/main.js', 'assets/js/plugins/*.js']
             },
             options: {
               devel: false
