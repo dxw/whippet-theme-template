@@ -4,3 +4,4 @@
 /templates/assets/
 /.npm-debug.log
 /vendor
+/.sass-cache
