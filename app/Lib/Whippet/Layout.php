@@ -1,5 +1,6 @@
 <?php
-namespace Whippet;
+
+namespace MyTheme\Lib\Whippet;
 
 /**
  * Theme wrapper, lifted from Roots, with some modifications. Thanks, Roots! (See: roots.io)
@@ -38,6 +39,9 @@ class Layout {
 
     return new Layout();
   }
-}
 
-add_filter('template_include', array('Whippet\Layout', 'apply'), 99);
+    public static function register()
+    {
+        add_filter('template_include', array('\\MyTheme\\Lib\\Whippet\\Layout', 'apply'), 99);
+    }
+}
