@@ -37,7 +37,7 @@
   <div class="wrap container" role="document">
     <div class="content row">
       <div class="main" role="main">
-        <?php w_requested_template(); ?>
+        <?php \MyTheme\Lib\Whippet\TemplateTags::w_requested_template(); ?>
       </div>
     </div>
   </div>
