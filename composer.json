@@ -14,7 +14,15 @@
     "require-dev": {
         "dxw/phar-install": "dev-master"
     },
+    "autoload": {
+        "psr-4": {
+            "MyTheme\\": "app/"
+        }
+    },
     "scripts": {
         "post-update-cmd": "vendor/bin/phar-install"
+    },
+    "require": {
+        "aura/autoload": "~2.0"
     }
 }
