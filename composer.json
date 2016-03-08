@@ -10,5 +10,11 @@
             "email": "harry@dxw.com",
             "homepage": "https://www.dxw.com/"
         }
-    ]
+    ],
+    "require-dev": {
+        "dxw/phar-install": "dev-master"
+    },
+    "scripts": {
+        "post-update-cmd": "vendor/bin/phar-install"
+    }
 }

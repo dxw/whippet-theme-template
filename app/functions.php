@@ -1,5 +1,7 @@
 <?php
 
+require __DIR__ . '/../vendor.phar';
+
 /*
  * Libraries and support code
  */
