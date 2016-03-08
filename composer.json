@@ -23,6 +23,7 @@
         "post-update-cmd": "vendor/bin/phar-install"
     },
     "require": {
-        "aura/autoload": "~2.0"
+        "aura/autoload": "~2.0",
+        "dxw/pagination": "dev-master"
     }
 }
