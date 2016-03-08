@@ -12,7 +12,9 @@
         }
     ],
     "require-dev": {
-        "dxw/phar-install": "dev-master"
+        "dxw/phar-install": "dev-master",
+        "10up/wp_mock": "dev-master",
+        "phpunit/phpunit": "4.8.*"
     },
     "autoload": {
         "psr-4": {
