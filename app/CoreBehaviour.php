@@ -2,16 +2,16 @@
 
 namespace MyTheme;
 
-/*
- * Make Atom the default feed format, and remove other formats from <head>
- */
+//
+// Make Atom the default feed format, and remove other formats from <head>
+//
 
 class CoreBehaviour
 {
     public static function register()
     {
-        add_action('init', function() {
-            add_filter('default_feed', function() { return 'atom'; });
+        add_action('init', function () {
+            add_filter('default_feed', function () { return 'atom'; });
 
             remove_action('do_feed_rdf', 'do_feed_rdf', 10, 1);
             remove_action('do_feed_rss', 'do_feed_rss', 10, 1);
