@@ -1,13 +1,10 @@
-<nav class="navbar" role="navigation">
-    <button data-target="#theme-nav-main" data-toggle="collapse" type="button" class="navbar-toggle">
-        <span class="sr-only">Toggle navigation</span>
+<nav class="navigation" role="navigation">
+    <button type="button" id="js-navigation-toggle" class="navigation-toggle">
         Menu
     </button>
-    <div id="theme-nav-main" class="navbar-collapse collapse" role="menu">
-        <?php
-        if (has_nav_menu('theme')) :
-            wp_nav_menu(array('theme_location' => 'theme', 'menu_class' => 'nav navbar-nav'));
-        endif;
-        ?>
-    </div>
+    <?php
+    if (has_nav_menu('theme')) {
+        wp_nav_menu(array('theme_location' => 'theme', 'menu_class' => 'nav navbar-nav'));
+    }
+    ?>
 </nav>
