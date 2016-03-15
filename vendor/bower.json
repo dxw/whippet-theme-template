@@ -1,11 +1,8 @@
 {
   "name": "A Whippet-based theme",
   "dependencies": {
-    "foundation": "~5.4",
-    "respond": "~1.3.0",
-    "jquery": "~2.1.0",
-    "jquery-ui": "~1.10.4",
-    "date-polyfill": "*",
-    "modernizr": "~2.8"
+    "jquery": "~1.12.0",
+    "jquery-accessibleMegaMenu": "https://github.com/adobe-accessibility/Accessible-Mega-Menu.git",
+    "enquire": "~2.1.2",
   }
 }
