@@ -16,7 +16,7 @@
 
   <link rel="apple-touch-icon-precomposed" href="<?php bloginfo('template_directory'); ?>/templates/assets/img/touch-icon.png">
 
-  <link rel="icon" type="image/png" href="<?php bloginfo('template_directory'); ?>/templates/assets/img/dxw.png" />
+  <link rel="icon" type="image/png" href="<?php bloginfo('template_directory'); ?>/templates/assets/img/shortcut-icon.png" />
 
   <?php wp_head(); ?>
 
