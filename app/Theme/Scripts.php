@@ -56,9 +56,9 @@ class Scripts implements \Dxw\Iguana\Registerable
         <!-- Prefetch internal image assets -->
         <link rel="prefetch" href="#">
 
-        <link rel="apple-touch-icon-precomposed" href="<?php echo esc_attr($this->getUri('img/touch-icon.png')) ?>">
+        <link rel="apple-touch-icon-precomposed" href="<?php echo esc_attr($this->getUri('img/apple-touch-icon-precomposed.png')) ?>">
 
-        <link rel="icon" type="image/png" href="<?php echo esc_attr($this->getUri('img/dxw.png')) ?>">
+        <link rel="icon" type="image/png" href="<?php echo esc_attr($this->getUri('img/shortcut-icon.png')) ?>">
         <?php
 
     }

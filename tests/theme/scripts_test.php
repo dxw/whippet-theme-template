@@ -108,9 +108,9 @@ class Theme_Scripts_Test extends PHPUnit_Framework_TestCase
             '        <!-- Prefetch internal image assets -->',
             '        <link rel="prefetch" href="#">',
             '',
-            '        <link rel="apple-touch-icon-precomposed" href="_http://a.invalid/build/img/touch-icon.png_">',
+            '        <link rel="apple-touch-icon-precomposed" href="_http://a.invalid/build/img/apple-touch-icon-precomposed.png_">',
             '',
-            '        <link rel="icon" type="image/png" href="_http://a.invalid/build/img/dxw.png_">',
+            '        <link rel="icon" type="image/png" href="_http://a.invalid/build/img/shortcut-icon.png_">',
             '        ',
         ]));
 
