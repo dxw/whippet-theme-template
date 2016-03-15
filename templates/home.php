@@ -1,8 +1,6 @@
-<header class="title site col-md-9">
-  <hgroup>
-    <h1><?php echo bloginfo('name'); ?></h1>
-    <h2><?php echo bloginfo('description'); ?></h2>
-  </hgroup>
+<header>
+  <h1><?php echo bloginfo('name'); ?></h1>
+  <h2><?php echo bloginfo('description'); ?></h2>
 </header>
 
 <?php if (have_posts()) : ?>
@@ -11,6 +9,6 @@
   <?php endwhile; ?>
 <?php endif; ?>
 
-<div class="col-md-12">
+<div class="pager">
   <?php get_template_part('partials/pager') ?>
 </div>
