@@ -1,37 +1,40 @@
 <?php
 
-/*
- * Libraries and support code
- */
+require __DIR__.'/../vendor.phar';
 
-require __DIR__ . '/lib/whippet/whippet.php';
-require __DIR__ . '/lib/roots_walker_comment.class.php';
+// Autoload
+$loader = new \Aura\Autoload\Loader();
+$loader->register();
+$loader->addPrefix('MyTheme', __DIR__);
 
+//
+// Libraries and support code
+//
 
-/*
- * WordPress core behaviour adjustments
- */
+\MyTheme\Lib\Whippet\Layout::register();
 
-require __DIR__ . '/core_behaviour.php';
+\MyTheme\Lib\RootsWalkerComment::register();
 
+//
+// WordPress core behaviour adjustments
+//
 
-/*
- * Theme behaviour, media, assets and template tags
- */
+\MyTheme\CoreBehaviour::register();
 
-require __DIR__ . '/theme/scripts.php';
-require __DIR__ . '/theme/media.php';
-require __DIR__ . '/theme/menus.php';
-require __DIR__ . '/theme/widgets.php';
+//
+// Theme behaviour, media, assets and template tags
+//
 
-require __DIR__ . '/theme/helpers.php';  ## Needs more stuffs
-require __DIR__ . '/theme/pagination.php'; ## TODO: This should be refactored into lib, and be flexibile enough for all projects' needs
-require __DIR__ . '/theme/titles.php';
+\MyTheme\Theme\Scripts::register();
+\MyTheme\Theme\Media::register();
+\MyTheme\Theme\Menus::register();
+\MyTheme\Theme\Widgets::register();
 
+\MyTheme\Theme\Helpers::register();  ## Needs more stuffs
 
-/*
- * Post types and additional fields
- */
+//
+// Post types and additional fields
+//
 
-require __DIR__ . '/posts/post_types.php';
-require __DIR__ . '/posts/custom_fields.php';
+\MyTheme\Posts\PostTypes::register();
+\MyTheme\Posts\CustomFields::register();

@@ -1,4 +1,7 @@
-vendor/node_modules
-vendor/.grunt
-vendor/bower_components
-.npm-debug.log
+/node_modules
+/.grunt
+/bower_components
+/templates/assets/
+/.npm-debug.log
+/vendor
+/.sass-cache

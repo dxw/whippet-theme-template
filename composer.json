@@ -1,0 +1,19 @@
+{
+    "require-dev": {
+        "dxw/phar-install": "dev-master",
+        "10up/wp_mock": "dev-master",
+        "phpunit/phpunit": "4.8.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "MyTheme\\": "app/"
+        }
+    },
+    "scripts": {
+        "post-update-cmd": "vendor/bin/phar-install"
+    },
+    "require": {
+        "aura/autoload": "~2.0",
+        "dxw/pagination": "dev-master"
+    }
+}
