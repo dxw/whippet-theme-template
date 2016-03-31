@@ -14,7 +14,7 @@
   <!-- Prefetch internal image assets -->
   <link rel="prefetch" href="#">
 
-  <link rel="apple-touch-icon-precomposed" href="<?php bloginfo('template_directory'); ?>/templates/assets/img/touch-icon.png">
+  <link rel="apple-touch-icon-precomposed" href="<?php bloginfo('template_directory'); ?>/templates/assets/img/apple-touch-icon-precomposed.png">
 
   <link rel="icon" type="image/png" href="<?php bloginfo('template_directory'); ?>/templates/assets/img/shortcut-icon.png" />
 
