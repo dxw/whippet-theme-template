@@ -1,6 +1,6 @@
 <?php
 
-namespace MyTheme;
+namespace Dxw\MyTheme;
 
 //
 // Make Atom the default feed format, and remove other formats from <head>

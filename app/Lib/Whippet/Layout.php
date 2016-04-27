@@ -1,6 +1,6 @@
 <?php
 
-namespace MyTheme\Lib\Whippet;
+namespace Dxw\MyTheme\Lib\Whippet;
 
 //
 // Theme wrapper, lifted from Roots, with some modifications. Thanks, Roots! (See: roots.io).

@@ -1,6 +1,6 @@
 <?php
 
-namespace MyTheme\Posts;
+namespace Dxw\MyTheme\Posts;
 
 class CustomFields
 {

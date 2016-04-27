@@ -1,6 +1,6 @@
 <?php
 
-namespace MyTheme\Theme;
+namespace Dxw\MyTheme\Theme;
 
 class Menus
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace MyTheme\Lib;
+namespace Dxw\MyTheme\Lib;
 
 //
 // Use Bootstrap's media object for listing comments.
