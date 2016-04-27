@@ -4,7 +4,7 @@ namespace MyTheme\Theme;
 
 class Helpers
 {
-    public static function register()
+    public function register()
     {
         add_action('wp_footer', function () {
             ?>

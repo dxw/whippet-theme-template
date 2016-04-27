@@ -4,7 +4,7 @@ namespace MyTheme\Posts;
 
 class CustomFields
 {
-    public static function register()
+    public function register()
     {
         // ...
     }

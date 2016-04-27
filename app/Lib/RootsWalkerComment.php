@@ -71,8 +71,8 @@ class RootsWalkerComment extends \Walker_Comment
         return $avatar;
     }
 
-    public static function register()
+    public function register()
     {
-        add_filter('get_avatar', ['\\MyTheme\\Lib\\RootsWalkerComment', 'roots_get_avatar'], 10, 2);
+        add_filter('get_avatar', [$this, 'roots_get_avatar'], 10, 2);
     }
 }

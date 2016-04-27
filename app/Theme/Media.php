@@ -4,7 +4,7 @@ namespace MyTheme\Theme;
 
 class Media
 {
-    public static function register()
+    public function register()
     {
         set_post_thumbnail_size(150, 150, true);
         add_image_size('medium', 200, 200, true);

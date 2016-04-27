@@ -8,7 +8,7 @@ namespace MyTheme;
 
 class CoreBehaviour
 {
-    public static function register()
+    public function register()
     {
         add_action('init', function () {
             add_filter('default_feed', function () { return 'atom'; });

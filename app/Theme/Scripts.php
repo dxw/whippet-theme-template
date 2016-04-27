@@ -4,7 +4,7 @@ namespace MyTheme\Theme;
 
 class Scripts
 {
-    public static function register()
+    public function register()
     {
         add_action('wp_enqueue_scripts', function () {
             //

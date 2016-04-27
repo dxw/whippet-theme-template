@@ -7,7 +7,7 @@ class Widgets
     //
     // Register sidebars.
     //
-    public static function widgets_init()
+    public function widgets_init()
     {
         register_sidebar(array(
             'name' => __('Primary'),
@@ -28,8 +28,8 @@ class Widgets
         ));
     }
 
-    public static function register()
+    public function register()
     {
-        add_action('widgets_init', 'widgets_init');
+        add_action('widgets_init', [$this, 'widgets_init']);
     }
 }

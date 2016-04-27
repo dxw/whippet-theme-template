@@ -31,7 +31,7 @@ class Layout
         return locate_template($this->templates);
     }
 
-    public static function apply($wordpress_template)
+    public function apply($wordpress_template)
     {
         self::$wordpress_template = dirname($wordpress_template).'/'.basename($wordpress_template);
         self::$base = basename(self::$wordpress_template, '.php');
@@ -43,8 +43,8 @@ class Layout
         return new self();
     }
 
-    public static function register()
+    public function register()
     {
-        add_filter('template_include', array('\\MyTheme\\Lib\\Whippet\\Layout', 'apply'), 99);
+        add_filter('template_include', array($this, 'apply'), 99);
     }
 }
