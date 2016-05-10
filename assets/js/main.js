@@ -1,3 +1,5 @@
+/* globals jQuery */
+
 jQuery(function ($) {
-    'use strict';
-});
+  'use strict'
+})
