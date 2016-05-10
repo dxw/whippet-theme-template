@@ -1,7 +1,6 @@
 module.exports = function (grunt) {
     'use strict';
 
-    grunt.loadTasks('lib/tasks');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -9,32 +8,15 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-img');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-clean');
-    //grunt.loadNpmTasks('grunt-phpmd');
-
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
         sass: {
-          '': 'development',
-
-          development: {
-            options: {
-              style: 'expanded',
-              sourcemap: 'auto',
-              trace: true,
-              debugInfo: true,
-              lineNumbers: true
-            },
-            files: {
-              'templates/assets/main.min.css': 'assets/scss/main.scss'
-            }
-          },
-
           production: {
             options: {
               style: 'compressed',
-              sourcemap: 'none',
+              sourcemap: 'auto',
             },
             files: {
               'templates/assets/main.min.css': 'assets/scss/main.scss'
@@ -43,10 +25,9 @@ module.exports = function (grunt) {
         },
 
         uglify: {
-           '': 'development',
-
            production: {
                options: {
+                   sourceMap: true,
                    preserveComments: 'none'
                },
                files: {
@@ -63,27 +44,6 @@ module.exports = function (grunt) {
                    ]
                }
            },
-           development: {
-               options: {
-                   preserveComments: 'all',
-                   compress: false,
-                   beautify: true,
-                   sourceMap: true
-               },
-               files: {
-                   'templates/assets/main.min.js': [
-                       'assets/js/plugins/*.js',
-                       'assets/js/main.js'
-                   ],
-                   'templates/assets/lib/modernizr.min.js': [
-                       'bower_components/modernizr/feature-detects/*.js',
-                       'bower_components/modernizr/modernizr.js'
-                   ],
-                    'templates/assets/lib/jquery.min.js': [
-                       'bower_components/jquery/dist/jquery.js'
-                   ]
-               }
-           }
        },
 
         img: {
@@ -106,23 +66,7 @@ module.exports = function (grunt) {
 
         clean: ['templates/assets/*'],
 
-        /*phpmd: {
-          '': 'development',
-
-          options: {
-            rulesets: 'codesize,unusedcode,naming',
-            bin: '~/Projects/tools/phpmd/src/bin/phpmd',
-            reportFormat: 'text'
-          },
-
-          development: {
-            dir: "../"
-          }
-        },*/
-
         jshint: {
-          '': 'development',
-
           options: {
             bitwise: true,
             curly: true,
@@ -139,15 +83,6 @@ module.exports = function (grunt) {
             node: true
           },
 
-          development: {
-            files: {
-              src: ['Gruntfile.js', 'assets/js/main.js', 'assets/js/plugins/*.js']
-            },
-            options: {
-              devel: true
-            }
-          },
-
           production: {
             files: {
               src: ['Gruntfile.js', 'assets/js/main.js', 'assets/js/plugins/*.js']
@@ -158,8 +93,6 @@ module.exports = function (grunt) {
           }
         }
     });
-
-    var env = grunt.option('env') || 'development';
 
     grunt.registerTask('bower-install', 'Installs bower deps', function () {
         var done = this.async(),
@@ -179,7 +112,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('default', [
         'bower-install',
-        'sass:' + env,
-        'uglify:'+ env
+        'sass',
+        'uglify'
     ]);
 };
