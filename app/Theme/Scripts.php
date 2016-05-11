@@ -12,7 +12,7 @@ class Scripts
 
     public function getUri($path)
     {
-        return get_stylesheet_directory_uri().'/../build/'.$path;
+        return dirname(get_stylesheet_directory_uri()).'/build/'.$path;
     }
 
     public function wpEnqueueScripts()
