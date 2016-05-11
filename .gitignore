@@ -4,3 +4,5 @@
 /.npm-debug.log
 /vendor
 /.sass-cache
+/build/**/*.map
+/build/img/**/*.bak

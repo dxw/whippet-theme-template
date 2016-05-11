@@ -94,6 +94,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('default', [
     'bower-install',
+    'img',
     'sass',
     'standard',
     'uglify'
