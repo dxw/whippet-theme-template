@@ -19,7 +19,7 @@ module.exports = function (grunt) {
           sourcemap: 'auto'
         },
         files: {
-          'templates/assets/main.min.css': 'assets/scss/main.scss'
+          'build/main.min.css': 'assets/scss/main.scss'
         }
       }
     },
@@ -31,15 +31,15 @@ module.exports = function (grunt) {
           preserveComments: 'none'
         },
         files: {
-          'templates/assets/main.min.js': [
+          'build/main.min.js': [
             'assets/js/plugins/*.js',
             'assets/js/main.js'
           ],
-          'templates/assets/lib/modernizr.min.js': [
+          'build/lib/modernizr.min.js': [
             'bower_components/modernizr/feature-detects/*.js',
             'bower_components/modernizr/modernizr.js'
           ],
-          'templates/assets/lib/jquery.min.js': [
+          'build/lib/jquery.min.js': [
             'bower_components/jquery/dist/jquery.js'
           ]
         }
@@ -49,7 +49,7 @@ module.exports = function (grunt) {
     img: {
       dist: {
         src: 'assets/img',
-        dest: 'templates/assets/img'
+        dest: 'build/img'
       }
     },
 
@@ -64,7 +64,7 @@ module.exports = function (grunt) {
       }
     },
 
-    clean: ['templates/assets/*'],
+    clean: ['build/*'],
 
     standard: {
       production: {

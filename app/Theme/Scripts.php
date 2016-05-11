@@ -19,15 +19,15 @@ class Scripts
             // This will not affect admin pages
             // This will break any plugin that requires a feature/behaviour in jQuery 2.x which is missing/different in jQuery 1.10.x
             wp_deregister_script('jquery');
-            wp_enqueue_script('jquery',   get_template_directory_uri().'/assets/lib/jquery.min.js');
+            wp_enqueue_script('jquery',   get_template_directory_uri().'/../lib/jquery.min.js');
 
             // Because it's awesome
-            wp_enqueue_script('modernizr', get_template_directory_uri().'/assets/lib/modernizr.min.js');
+            wp_enqueue_script('modernizr', get_template_directory_uri().'/../lib/modernizr.min.js');
 
             // Pretty much everything else should be compiled by Grunt.
-            wp_enqueue_script('main',      get_template_directory_uri().'/assets/main.min.js', array('jquery', 'modernizr'), '', true);
+            wp_enqueue_script('main',      get_template_directory_uri().'/../main.min.js', array('jquery', 'modernizr'), '', true);
 
-            wp_enqueue_style('main',      get_stylesheet_directory_uri().'/assets/main.min.css');
+            wp_enqueue_style('main',      get_stylesheet_directory_uri().'/../main.min.css');
         });
     }
 }
