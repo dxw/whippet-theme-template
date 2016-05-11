@@ -35,5 +35,59 @@ CSS/JS assets are compiled into `build/` (`.map` files are gitignored). This can
 
 ## Code layout
 
-TODO
+- `app/`
+    - `di.php`
+        - Loads everything in `app/`. (Loads composer dependencies, sets up autoloading)
+    - `Registrar.php`
+        - Where dependency injection and registration happens
+    - `Lib/`
+        - TODO
+    - `Posts/`
+        - TODO
+    - `Theme/`
+        - TODO
+- `assets/`
+    - `img/`
+        - Place for raw images (they get minified by grunt and put in `build/img/`)
+    - `js/`
+        - `main.js`
+            - TODO
+        - `plugins/`
+            - TODO
+    - `scss/`
+        - `main.scss`
+            - TODO
+        - `common/`
+            - TODO
+        - `templates/`
+            - TODO
+- `build/`
+    - TODO
+- `lib/`
+    - TODO
+- `templates/`
+    - `functions.php`
+        - TODO
+    - `layouts`
+        - TODO
+    - `partials`
+        - TODO
+    - `style.css`
+        - TODO
+- `tests/`
+    - TODO
 
+TODO:
+
+```
+├── vendor
+├── composer.json
+├── composer.lock
+├── bower.json
+├── Gruntfile.js
+├── LICENSE.txt
+├── package.json
+├── phpunit.xml
+├── README.md
+└── vendor.phar
+```
