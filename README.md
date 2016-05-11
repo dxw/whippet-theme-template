@@ -1,23 +1,39 @@
-# Health warning
+# whippet-theme-template
+
+A base theme suitable for basing new themes upon.
+
+Not desigened for use a parent theme.
+
+## Health warning
 
 This theme is not finished yet. We'd love it if you want to have a play and give us your thoughts - and pull requests gratefully received. But probably best to tread carefully.
 
+## Testing
 
-## About this theme
+PHP tests (part of `.travis.yml`):
 
-This is the base theme for use in Whippet applications. You don't have to use it, but they play nice together.
+    vendor/bin/phpunit
 
+JavaScript does not have tests yet.
 
-## Roadmap 
+## Linting
 
-* H: Whippet should generate a domain for internalisation - the domain is currently 'roots'?
-* H: Check that we have everything in /app
-* H: Make layouts work
-* H: Make sure that index.php works through a template
-* H: Check the TODOs sprinkled liberally across the theme directory and answer questions and/or fix stuff
-* H: Layout for not being logged in
-* https://github.com/jgable/grunt-lesslint
-* ?? https://www.npmjs.org/package/grunt-bump
-* ?? https://npmjs.org/package/grunt-modernizr
-* ?? https://npmjs.org/package/grunt-contrib-livereload
-* A whippet linter
+PHP linting (part of `.travis.yml`):
+
+    composer global require fabpot/php-cs-fixer
+    php-cs-fixer
+
+JS linting (not part of `.travis.yml`, but part of `grunt watch`):
+
+    grunt standard
+
+## Building
+
+Composer dependencies are compiled into `vendor.phar` which should then be checked into git. This is run automatically when running `composer install` or `composer update`.
+
+CSS/JS assets are compiled into `build/` (`.map` files are gitignored). This can be run once via `grunt`, or assets can be built when files are modified by running `grunt watch`. Must run `npm install` before running `grunt`.
+
+## Code layout
+
+TODO
+
