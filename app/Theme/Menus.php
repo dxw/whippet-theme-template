@@ -2,7 +2,7 @@
 
 namespace Dxw\MyTheme\Theme;
 
-class Menus
+class Menus implements \Dxw\MyTheme\Registerable
 {
     public function register()
     {

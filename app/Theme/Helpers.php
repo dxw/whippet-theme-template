@@ -2,7 +2,7 @@
 
 namespace Dxw\MyTheme\Theme;
 
-class Helpers
+class Helpers implements \Dxw\MyTheme\Registerable
 {
     public function register()
     {

@@ -2,7 +2,7 @@
 
 namespace Dxw\MyTheme\Theme;
 
-class Widgets
+class Widgets implements \Dxw\MyTheme\Registerable
 {
     //
     // Register sidebars.

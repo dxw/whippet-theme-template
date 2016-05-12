@@ -2,7 +2,7 @@
 
 namespace Dxw\MyTheme\Theme;
 
-class Media
+class Media implements \Dxw\MyTheme\Registerable
 {
     public function register()
     {

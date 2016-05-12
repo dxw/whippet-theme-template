@@ -2,7 +2,7 @@
 
 namespace Dxw\MyTheme\Theme;
 
-class Scripts
+class Scripts implements \Dxw\MyTheme\Registerable
 {
     public function register()
     {
