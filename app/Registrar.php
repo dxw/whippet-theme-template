@@ -37,7 +37,7 @@ class Registrar
         }
     }
 
-    public static function getInstance()
+    public static function getSingleton()
     {
         if (!isset(self::$singleton)) {
             self::$singleton = new self();

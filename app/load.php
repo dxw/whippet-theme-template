@@ -6,7 +6,7 @@ $loader = new \Aura\Autoload\Loader();
 $loader->register();
 $loader->addPrefix('Dxw\\MyTheme', __DIR__);
 
-$registrar = \Dxw\MyTheme\Registrar::getInstance();
+$registrar = \Dxw\MyTheme\Registrar::getSingleton();
 $registrar->di(__DIR__.'/di.php');
 
 return $registrar;
