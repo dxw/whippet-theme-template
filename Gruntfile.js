@@ -1,185 +1,102 @@
 module.exports = function (grunt) {
-    'use strict';
+  'use strict'
 
-    grunt.loadTasks('lib/tasks');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-sass');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-img');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    //grunt.loadNpmTasks('grunt-phpmd');
+  grunt.loadNpmTasks('grunt-contrib-watch')
+  grunt.loadNpmTasks('grunt-contrib-sass')
+  grunt.loadNpmTasks('grunt-contrib-uglify')
+  grunt.loadNpmTasks('grunt-contrib-copy')
+  grunt.loadNpmTasks('grunt-img')
+  grunt.loadNpmTasks('grunt-contrib-clean')
+  grunt.loadNpmTasks('grunt-standard')
 
+  grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
 
-    grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
-
-        sass: {
-          '': 'development',
-
-          development: {
-            options: {
-              style: 'expanded',
-              sourcemap: 'auto',
-              trace: true,
-              debugInfo: true,
-              lineNumbers: true
-            },
-            files: {
-              'templates/assets/main.min.css': 'assets/scss/main.scss'
-            }
-          },
-
-          production: {
-            options: {
-              style: 'compressed',
-              sourcemap: 'none',
-            },
-            files: {
-              'templates/assets/main.min.css': 'assets/scss/main.scss'
-            }
-          }
+    sass: {
+      production: {
+        options: {
+          style: 'compressed',
+          sourcemap: 'auto'
         },
-
-        uglify: {
-           '': 'development',
-
-           production: {
-               options: {
-                   preserveComments: 'none'
-               },
-               files: {
-                   'templates/assets/main.min.js': [
-                       'assets/js/plugins/*.js',
-                       'assets/js/main.js'
-                   ],
-                   'templates/assets/lib/modernizr.min.js': [
-                       'bower_components/modernizr/feature-detects/*.js',
-                       'bower_components/modernizr/modernizr.js'
-                   ],
-                    'templates/assets/lib/jquery.min.js': [
-                       'bower_components/jquery/dist/jquery.js'
-                   ]
-               }
-           },
-           development: {
-               options: {
-                   preserveComments: 'all',
-                   compress: false,
-                   beautify: true,
-                   sourceMap: true
-               },
-               files: {
-                   'templates/assets/main.min.js': [
-                       'assets/js/plugins/*.js',
-                       'assets/js/main.js'
-                   ],
-                   'templates/assets/lib/modernizr.min.js': [
-                       'bower_components/modernizr/feature-detects/*.js',
-                       'bower_components/modernizr/modernizr.js'
-                   ],
-                    'templates/assets/lib/jquery.min.js': [
-                       'bower_components/jquery/dist/jquery.js'
-                   ]
-               }
-           }
-       },
-
-        img: {
-            dist: {
-                src: 'assets/img',
-                dest: 'templates/assets/img'
-            }
-        },
-
-        _watch: {
-            less: {
-                files: ['assets/scss/*.scss', 'assets/scss/*/*.scss'],
-                tasks: ['sass']
-            },
-            js: {
-                files: ['assets/js/main.js', 'assets/js/plugins/*.js'],
-                tasks: ['jshint', 'uglify']
-            }
-        },
-
-        clean: ['templates/assets/*'],
-
-        /*phpmd: {
-          '': 'development',
-
-          options: {
-            rulesets: 'codesize,unusedcode,naming',
-            bin: '~/Projects/tools/phpmd/src/bin/phpmd',
-            reportFormat: 'text'
-          },
-
-          development: {
-            dir: "../"
-          }
-        },*/
-
-        jshint: {
-          '': 'development',
-
-          options: {
-            bitwise: true,
-            curly: true,
-            es3: true,
-            latedef: true,
-            noarg: true,
-            nonbsp: true,
-            nonew: true,
-            undef: true,
-            unused: true,
-
-            browser: true,
-            jquery: true,
-            node: true
-          },
-
-          development: {
-            files: {
-              src: ['Gruntfile.js', 'assets/js/main.js', 'assets/js/plugins/*.js']
-            },
-            options: {
-              devel: true
-            }
-          },
-
-          production: {
-            files: {
-              src: ['Gruntfile.js', 'assets/js/main.js', 'assets/js/plugins/*.js']
-            },
-            options: {
-              devel: false
-            }
-          }
+        files: {
+          'build/main.min.css': 'assets/scss/main.scss'
         }
-    });
+      }
+    },
 
-    var env = grunt.option('env') || 'development';
+    uglify: {
+      production: {
+        options: {
+          sourceMap: true,
+          preserveComments: 'none'
+        },
+        files: {
+          'build/main.min.js': [
+            'assets/js/plugins/*.js',
+            'assets/js/main.js'
+          ],
+          'build/lib/modernizr.min.js': [
+            'bower_components/modernizr/feature-detects/*.js',
+            'bower_components/modernizr/modernizr.js'
+          ],
+          'build/lib/jquery.min.js': [
+            'bower_components/jquery/dist/jquery.js'
+          ]
+        }
+      }
+    },
 
-    grunt.registerTask('bower-install', 'Installs bower deps', function () {
-        var done = this.async(),
-            bower = require('bower');
+    img: {
+      dist: {
+        src: 'assets/img',
+        dest: 'build/img'
+      }
+    },
 
-        bower.commands.install().on('end', function () {
-            done();
-        });
-    });
+    _watch: {
+      less: {
+        files: ['assets/scss/*.scss', 'assets/scss/*/*.scss'],
+        tasks: ['sass']
+      },
+      js: {
+        files: ['assets/js/main.js', 'assets/js/plugins/*.js'],
+        tasks: ['standard', 'uglify']
+      }
+    },
 
-    grunt.renameTask('watch', '_watch');
+    clean: ['build/*'],
 
-    grunt.registerTask('watch', [
-        'default',
-        '_watch'
-    ]);
+    standard: {
+      production: {
+        src: [
+          'Gruntfile.js',
+          'assets/js/main.js'
+        ]
+      }
+    }
+  })
 
-    grunt.registerTask('default', [
-        'bower-install',
-        'sass:' + env,
-        'uglify:'+ env
-    ]);
-};
+  grunt.registerTask('bower-install', 'Installs bower deps', function () {
+    var done = this.async()
+    var bower = require('bower')
+
+    bower.commands.install().on('end', function () {
+      done()
+    })
+  })
+
+  grunt.renameTask('watch', '_watch')
+
+  grunt.registerTask('watch', [
+    'default',
+    '_watch'
+  ])
+
+  grunt.registerTask('default', [
+    'bower-install',
+    'img',
+    'sass',
+    'standard',
+    'uglify'
+  ])
+}
