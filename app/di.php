@@ -19,6 +19,9 @@ $registrar->addInstance('Dxw\\MyTheme\\Theme\\Menus', new \Dxw\MyTheme\Theme\Men
 $registrar->addInstance('Dxw\\MyTheme\\Theme\\Widgets', new \Dxw\MyTheme\Theme\Widgets());
 $registrar->addInstance('Dxw\\MyTheme\\Theme\\Helpers', new \Dxw\MyTheme\Theme\Helpers());
 $registrar->addInstance('Dxw\\MyTheme\\Theme\\TitleTag', new \Dxw\MyTheme\Theme\TitleTag());
+$registrar->addInstance('Dxw\\MyTheme\\Theme\\Pagination', new \Dxw\MyTheme\Theme\Pagination(
+    $registrar->getInstance('Dxw\\MyTheme\\Helpers')
+));
 
 // Post types and additional fields
 $registrar->addInstance('Dxw\\MyTheme\\Posts\\PostTypes', new \Dxw\MyTheme\Posts\PostTypes());
