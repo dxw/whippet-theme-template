@@ -1,6 +1,6 @@
 <header class="title col-md-9">
     <hgroup>
-        <h1><?php echo \Dxw\MyTheme\Registrar::getSingleton()->getInstance('Dxw\\MyTheme\\Helpers')->w_template_title(); ?></h1>
+        <h1><?php echo h()->w_template_title(); ?></h1>
         <?php if (category_description()) :?>
             <h2><?php echo category_description(); ?></h2>
         <?php endif; ?>
