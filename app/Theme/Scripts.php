@@ -4,6 +4,11 @@ namespace Dxw\MyTheme\Theme;
 
 class Scripts implements \Dxw\MyTheme\Registerable
 {
+    public function __construct(\Dxw\MyTheme\Helpers $helpers)
+    {
+        $helpers->registerFunction('assetPath', [$this, 'getUri']);
+    }
+
     public function register()
     {
         add_action('wp_enqueue_scripts', [$this, 'wpEnqueueScripts']);

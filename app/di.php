@@ -11,7 +11,9 @@ $registrar->addInstance('Dxw\\MyTheme\\Lib\\RootsWalkerComment', new \Dxw\MyThem
 $registrar->addInstance('Dxw\\MyTheme\\CoreBehaviour', new \Dxw\MyTheme\CoreBehaviour());
 
 // Theme behaviour, media, assets and template tags
-$registrar->addInstance('Dxw\\MyTheme\\Theme\\Scripts', new \Dxw\MyTheme\Theme\Scripts());
+$registrar->addInstance('Dxw\\MyTheme\\Theme\\Scripts', new \Dxw\MyTheme\Theme\Scripts(
+    $registrar->getInstance('Dxw\\MyTheme\\Helpers')
+));
 $registrar->addInstance('Dxw\\MyTheme\\Theme\\Media', new \Dxw\MyTheme\Theme\Media());
 $registrar->addInstance('Dxw\\MyTheme\\Theme\\Menus', new \Dxw\MyTheme\Theme\Menus());
 $registrar->addInstance('Dxw\\MyTheme\\Theme\\Widgets', new \Dxw\MyTheme\Theme\Widgets());
