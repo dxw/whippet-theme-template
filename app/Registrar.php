@@ -4,6 +4,8 @@ namespace Dxw\MyTheme;
 
 class Registrar
 {
+    protected static $singleton;
+
     public function __construct()
     {
         $this->di = [];
@@ -54,11 +56,10 @@ class Registrar
 
     public static function getInstance()
     {
-        global $dxw_eventbritesync_registrar;
-        if (!isset($dxw_eventbritesync_registrar)) {
-            $dxw_eventbritesync_registrar = new self();
+        if (!isset(self::$singleton)) {
+            self::$singleton = new self();
         }
 
-        return $dxw_eventbritesync_registrar;
+        return self::$singleton;
     }
 }
