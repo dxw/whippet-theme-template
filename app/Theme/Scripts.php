@@ -43,6 +43,7 @@ class Scripts implements \Dxw\MyTheme\Registerable
     public function wpPrintScripts()
     {
         ?>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/png" href="<?php echo esc_attr($this->getUri('img/dxw.png')) ?>">
         <?php
 
