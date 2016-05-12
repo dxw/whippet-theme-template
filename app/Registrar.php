@@ -11,9 +11,9 @@ class Registrar
     {
         $this->di = [];
 
-        // Superglobals
         $this->addInstance('Dxw\\MyTheme\\SuperglobalPost', new \Dxw\MyTheme\SuperglobalPost());
         $this->addInstance('Dxw\\MyTheme\\SuperglobalGet', new \Dxw\MyTheme\SuperglobalGet());
+        $this->addInstance('Dxw\\MyTheme\\Helpers', new \Dxw\MyTheme\Helpers());
     }
 
     public function di($path)
@@ -26,6 +26,11 @@ class Registrar
     public function addInstance($class, $instance)
     {
         $this->di[$class] = $instance;
+    }
+
+    public function getInstance($class)
+    {
+        return $this->di[$class];
     }
 
     public function register()

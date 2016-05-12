@@ -4,7 +4,13 @@ namespace Dxw\MyTheme\Lib\Whippet;
 
 class TemplateTags
 {
-    public static function w_requested_template()
+    public function __construct(\Dxw\MyTheme\Helpers $helpers)
+    {
+        $helpers->registerFunction('w_requested_template', [$this, 'w_requested_template']);
+        $helpers->registerFunction('w_template_title', [$this, 'w_template_title']);
+    }
+
+    public function w_requested_template()
     {
         require \Dxw\MyTheme\Lib\Whippet\Layout::$wordpress_template;
     }
@@ -18,7 +24,7 @@ class TemplateTags
 
     }
 
-    public static function w_template_title()
+    public function w_template_title()
     {
         if (is_home()) {
             if (get_option('page_for_posts', true)) {

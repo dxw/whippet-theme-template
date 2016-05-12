@@ -31,7 +31,7 @@
     <div class="wrap container" role="document">
         <div class="content row">
             <div class="main" role="main">
-                <?php \Dxw\MyTheme\Lib\Whippet\TemplateTags::w_requested_template(); ?>
+                <?php \Dxw\MyTheme\Registrar::getSingleton()->getInstance('Dxw\\MyTheme\\Helpers')->w_requested_template(); ?>
             </div>
         </div>
     </div>

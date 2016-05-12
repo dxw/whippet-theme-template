@@ -2,6 +2,9 @@
 
 // Libraries and support code
 $registrar->addInstance('Dxw\\MyTheme\\Lib\\Whippet\\Layout', new \Dxw\MyTheme\Lib\Whippet\Layout());
+$registrar->addInstance('Dxw\\MyTheme\\Lib\\Whippet\\TemplateTags', new \Dxw\MyTheme\Lib\Whippet\TemplateTags(
+    $registrar->getInstance('Dxw\\MyTheme\\Helpers')
+));
 $registrar->addInstance('Dxw\\MyTheme\\Lib\\RootsWalkerComment', new \Dxw\MyTheme\Lib\RootsWalkerComment());
 
 // WordPress core behaviour adjustments
