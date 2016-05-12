@@ -13,6 +13,7 @@ $registrar->addInstance('Dxw\\MyTheme\\Theme\\Media', new \Dxw\MyTheme\Theme\Med
 $registrar->addInstance('Dxw\\MyTheme\\Theme\\Menus', new \Dxw\MyTheme\Theme\Menus());
 $registrar->addInstance('Dxw\\MyTheme\\Theme\\Widgets', new \Dxw\MyTheme\Theme\Widgets());
 $registrar->addInstance('Dxw\\MyTheme\\Theme\\Helpers', new \Dxw\MyTheme\Theme\Helpers());
+$registrar->addInstance('Dxw\\MyTheme\\Theme\\TitleTag', new \Dxw\MyTheme\Theme\TitleTag());
 
 // Post types and additional fields
 $registrar->addInstance('Dxw\\MyTheme\\Posts\\PostTypes', new \Dxw\MyTheme\Posts\PostTypes());
