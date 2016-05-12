@@ -10,9 +10,9 @@ class Registrar
     {
         $this->di = [];
 
-        # Superglobals
-        $this->di['POST'] = stripslashes_deep($_POST);
-        $this->di['GET'] = stripslashes_deep($_GET);
+        // Superglobals
+        $this->di['Dxw\\MyTheme\\SuperglobalPost'] = new \Dxw\MyTheme\SuperglobalPost();
+        $this->di['Dxw\\MyTheme\\SuperglobalGet'] = new \Dxw\MyTheme\SuperglobalGet();
 
         // Libraries and support code
         $this->di['Dxw\\MyTheme\\Lib\\Whippet\\Layout'] = new \Dxw\MyTheme\Lib\Whippet\Layout();
