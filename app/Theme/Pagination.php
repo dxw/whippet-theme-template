@@ -4,7 +4,12 @@ namespace Dxw\MyTheme\Theme;
 
 class Pagination
 {
-    public static function pagination($q = null, $return = false)
+    public function __construct(\Dxw\MyTheme\Helpers $helpers)
+    {
+        $helpers->registerFunction('pagination', [$this, 'pagination']);
+    }
+
+    public function pagination($q = null, $return = false)
     {
         global $wp_query;
         global $paged;

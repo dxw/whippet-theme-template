@@ -5,7 +5,7 @@ namespace Dxw\MyTheme\Lib\Whippet;
 //
 // Theme wrapper, lifted from Roots, with some modifications. Thanks, Roots! (See: roots.io).
 //
-class Layout
+class Layout implements \Dxw\MyTheme\Registerable
 {
     // Stores the full path to the template file WordPress says we should use
     public static $wordpress_template;

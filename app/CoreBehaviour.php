@@ -6,7 +6,7 @@ namespace Dxw\MyTheme;
 // Make Atom the default feed format, and remove other formats from <head>
 //
 
-class CoreBehaviour
+class CoreBehaviour implements \Dxw\MyTheme\Registerable
 {
     public function register()
     {

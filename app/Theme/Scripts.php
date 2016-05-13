@@ -2,8 +2,13 @@
 
 namespace Dxw\MyTheme\Theme;
 
-class Scripts
+class Scripts implements \Dxw\MyTheme\Registerable
 {
+    public function __construct(\Dxw\MyTheme\Helpers $helpers)
+    {
+        $helpers->registerFunction('assetPath', [$this, 'getUri']);
+    }
+
     public function register()
     {
         add_action('wp_enqueue_scripts', [$this, 'wpEnqueueScripts']);
@@ -43,6 +48,7 @@ class Scripts
     public function wpPrintScripts()
     {
         ?>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/png" href="<?php echo esc_attr($this->getUri('img/dxw.png')) ?>">
         <?php
 

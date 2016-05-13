@@ -3,5 +3,5 @@
 // Anything you might want to do here should be done in app/
 //
 
-$registrar = require __DIR__.'/../app/di.php';
+$registrar = require __DIR__.'/../app/load.php';
 $registrar->register();
