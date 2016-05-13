@@ -1,10 +1,11 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f3c8c589c1428231ea7492c79e1bad77",
+    "hash": "67723d3dc26f54787e4a664c6e770ae4",
+    "content-hash": "77b9a4ec21f0add553c693d307228395",
     "packages": [
         {
             "name": "aura/autoload",
@@ -57,6 +58,36 @@
                 "class loader"
             ],
             "time": "2015-03-27 19:34:08"
+        },
+        {
+            "name": "dxw/iguana",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dxw/iguana.git",
+                "reference": "0f53e700b56dbbc3e7059bd4f78f3aaeeb22892e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dxw/iguana/zipball/0f53e700b56dbbc3e7059bd4f78f3aaeeb22892e",
+                "reference": "0f53e700b56dbbc3e7059bd4f78f3aaeeb22892e",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.8.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Dxw\\Iguana\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "homepage": "https://github.com/dxw/iguana",
+            "time": "2016-05-13 15:15:34"
         },
         {
             "name": "dxw/pagination",
@@ -1281,6 +1312,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "dxw/pagination": 20,
+        "dxw/iguana": 20,
         "dxw/phar-install": 20,
         "10up/wp_mock": 20
     },

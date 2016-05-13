@@ -14,7 +14,7 @@ class Theme_TitleTag_Test extends PHPUnit_Framework_TestCase
 
     private function getRegistrar()
     {
-        $registrar = $this->getMockBuilder('\\Dxw\\MyTheme\\Registrar')
+        $registrar = $this->getMockBuilder('\\Dxw\\Iguana\\Registrar')
         ->disableOriginalConstructor()
         ->getMock();
 

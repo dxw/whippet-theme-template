@@ -2,9 +2,9 @@
 
 namespace Dxw\MyTheme\Theme;
 
-class Scripts implements \Dxw\MyTheme\Registerable
+class Scripts implements \Dxw\Iguana\Registerable
 {
-    public function __construct(\Dxw\MyTheme\Helpers $helpers)
+    public function __construct(\Dxw\Iguana\Helpers $helpers)
     {
         $helpers->registerFunction('assetPath', [$this, 'getUri']);
     }

@@ -2,7 +2,7 @@
 
 namespace Dxw\MyTheme\Posts;
 
-class CustomFields implements \Dxw\MyTheme\Registerable
+class CustomFields implements \Dxw\Iguana\Registerable
 {
     public function register()
     {
