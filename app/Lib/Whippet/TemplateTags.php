@@ -4,7 +4,7 @@ namespace Dxw\MyTheme\Lib\Whippet;
 
 class TemplateTags
 {
-    public function __construct(\Dxw\MyTheme\Helpers $helpers)
+    public function __construct(\Dxw\Iguana\Helpers $helpers)
     {
         $helpers->registerFunction('w_requested_template', [$this, 'w_requested_template']);
         $helpers->registerFunction('w_template_title', [$this, 'w_template_title']);

@@ -2,7 +2,7 @@
 
 namespace Dxw\MyTheme\Theme;
 
-class Menus implements \Dxw\MyTheme\Registerable
+class Menus implements \Dxw\Iguana\Registerable
 {
     public function register()
     {

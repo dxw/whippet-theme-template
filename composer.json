@@ -26,6 +26,7 @@
     },
     "require": {
         "aura/autoload": "~2.0",
-        "dxw/pagination": "dev-master"
+        "dxw/pagination": "dev-master",
+        "dxw/iguana": "dev-master"
     }
 }

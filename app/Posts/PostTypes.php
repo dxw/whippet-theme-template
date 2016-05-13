@@ -2,7 +2,7 @@
 
 namespace Dxw\MyTheme\Posts;
 
-class PostTypes implements \Dxw\MyTheme\Registerable
+class PostTypes implements \Dxw\Iguana\Registerable
 {
     public function register()
     {

@@ -4,7 +4,7 @@ namespace Dxw\MyTheme\Theme;
 
 class Pagination
 {
-    public function __construct(\Dxw\MyTheme\Helpers $helpers)
+    public function __construct(\Dxw\Iguana\Helpers $helpers)
     {
         $helpers->registerFunction('pagination', [$this, 'pagination']);
     }
