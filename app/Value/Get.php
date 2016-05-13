@@ -1,8 +1,8 @@
 <?php
 
-namespace Dxw\MyTheme;
+namespace Dxw\MyTheme\Value;
 
-class SuperglobalGet extends Superglobal
+class Get extends ArrayBase
 {
     public function __construct()
     {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Dxw\MyTheme;
+namespace Dxw\MyTheme\Value;
 
-abstract class Superglobal implements \ArrayAccess
+abstract class ArrayBase implements \ArrayAccess
 {
     protected $value;
 

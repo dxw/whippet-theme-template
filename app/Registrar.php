@@ -11,8 +11,8 @@ class Registrar
     {
         $this->di = [];
 
-        $this->addInstance('Dxw\\MyTheme\\SuperglobalPost', new \Dxw\MyTheme\SuperglobalPost());
-        $this->addInstance('Dxw\\MyTheme\\SuperglobalGet', new \Dxw\MyTheme\SuperglobalGet());
+        $this->addInstance('Dxw\\MyTheme\\Value\\Post', new \Dxw\MyTheme\Value\Post());
+        $this->addInstance('Dxw\\MyTheme\\Value\\Get', new \Dxw\MyTheme\Value\Get());
         $this->addInstance('Dxw\\MyTheme\\Helpers', new \Dxw\MyTheme\Helpers());
     }
 

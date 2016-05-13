@@ -1,6 +1,6 @@
 <?php
 
-class SuperglobalPost_Test extends PHPUnit_Framework_TestCase
+class Value_Post_Test extends PHPUnit_Framework_TestCase
 {
     public function testUsesCorrectGlobalVariable()
     {
@@ -9,7 +9,7 @@ class SuperglobalPost_Test extends PHPUnit_Framework_TestCase
             'g' => 'h',
         ];
 
-        $__post = new \Dxw\MyTheme\SuperglobalPost();
+        $__post = new \Dxw\MyTheme\Value\Post();
 
         $this->assertEquals('f', $__post['e']);
         $this->assertEquals('h', $__post['g']);

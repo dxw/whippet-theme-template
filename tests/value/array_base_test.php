@@ -1,6 +1,6 @@
 <?php
 
-class MySuperglobal extends \Dxw\MyTheme\Superglobal
+class MyArrayValue extends \Dxw\MyTheme\Value\ArrayBase
 {
     public function __construct(array $value)
     {
@@ -8,11 +8,11 @@ class MySuperglobal extends \Dxw\MyTheme\Superglobal
     }
 }
 
-class Superglobal_Test extends PHPUnit_Framework_TestCase
+class Value_ArrayBase_Test extends PHPUnit_Framework_TestCase
 {
     public function testOffsetExists()
     {
-        $superglobal = new MySuperglobal([
+        $superglobal = new MyArrayValue([
             'a' => 'b',
         ]);
 
@@ -22,7 +22,7 @@ class Superglobal_Test extends PHPUnit_Framework_TestCase
 
     public function testOffsetGet()
     {
-        $superglobal = new MySuperglobal([
+        $superglobal = new MyArrayValue([
             'a' => 'b',
         ]);
 
@@ -31,7 +31,7 @@ class Superglobal_Test extends PHPUnit_Framework_TestCase
 
     public function testOffsetSet()
     {
-        $superglobal = new MySuperglobal([]);
+        $superglobal = new MyArrayValue([]);
 
         try {
             $superglobal['a'] = 'b';
@@ -46,7 +46,7 @@ class Superglobal_Test extends PHPUnit_Framework_TestCase
 
     public function testOffsetUnset()
     {
-        $superglobal = new MySuperglobal([]);
+        $superglobal = new MyArrayValue([]);
 
         try {
             unset($superglobal['a']);

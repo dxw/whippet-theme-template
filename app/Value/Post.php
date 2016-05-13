@@ -1,8 +1,8 @@
 <?php
 
-namespace Dxw\MyTheme;
+namespace Dxw\MyTheme\Value;
 
-class SuperglobalPost extends Superglobal
+class Post extends ArrayBase
 {
     public function __construct()
     {
