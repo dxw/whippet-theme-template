@@ -88,3 +88,54 @@ CSS/JS assets are compiled into `build/` (`.map` files are gitignored). This can
         - TODO
 - `tests/`
     - TODO
+
+## Guide
+
+### Adding a new helper function
+
+Create a new file, say `app/Foobar.php`:
+
+```
+<?php
+
+class Foobar
+{
+    public function __construct(\Dxw\Iguana\Theme\Helpers $helpers)
+    {
+        $helpers->registerFunction('foobar', [$this, 'foobar']);
+    }
+
+    public function foobar()
+    {
+        // ...
+    }
+}
+```
+
+And instead of adding a `require` to `functions.php`, add a line like this to `app/di.php`:
+
+```
+$registrar->addInstance(\Namespace\MyTheme\Foobar::class, new \Namespace\MyTheme\Foobar(
+    $registrar->getInstance(\Dxw\Iguana\Theme\Helpers::class)
+));
+```
+
+And instead of using `foobar()` in your template code, use `h()->foobar()`.
+
+### Registering post types, actions, ACF fields, etc.
+
+Create a new file, say `app/RegisterStuff.php`:
+
+```
+<?php
+
+class RegisterStuff implements \Dxw\Iguana\Registerable
+{
+    public function register()
+    {
+        register_post_type('stuff', [
+            // ...
+        ]);
+    }
+}
+```
