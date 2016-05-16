@@ -1,28 +1,30 @@
 <?php
 
+$this->addInstance(\Dxw\Iguana\Theme\Helpers::class, new \Dxw\Iguana\Theme\Helpers());
+
 // Libraries and support code
-$registrar->addInstance('Dxw\\MyTheme\\Lib\\Whippet\\Layout', new \Dxw\MyTheme\Lib\Whippet\Layout());
-$registrar->addInstance('Dxw\\MyTheme\\Lib\\Whippet\\TemplateTags', new \Dxw\MyTheme\Lib\Whippet\TemplateTags(
-    $registrar->getInstance('Dxw\\Iguana\\Helpers')
+$registrar->addInstance(\Dxw\MyTheme\Lib\Whippet\Layout::class, new \Dxw\MyTheme\Lib\Whippet\Layout());
+$registrar->addInstance(\Dxw\MyTheme\Lib\Whippet\TemplateTags::class, new \Dxw\MyTheme\Lib\Whippet\TemplateTags(
+    $registrar->getInstance(\Dxw\Iguana\Theme\Helpers::class)
 ));
-$registrar->addInstance('Dxw\\MyTheme\\Lib\\RootsWalkerComment', new \Dxw\MyTheme\Lib\RootsWalkerComment());
+$registrar->addInstance(\Dxw\MyTheme\Lib\RootsWalkerComment::class, new \Dxw\MyTheme\Lib\RootsWalkerComment());
 
 // WordPress core behaviour adjustments
-$registrar->addInstance('Dxw\\MyTheme\\CoreBehaviour', new \Dxw\MyTheme\CoreBehaviour());
+$registrar->addInstance(\Dxw\MyTheme\CoreBehaviour::class, new \Dxw\MyTheme\CoreBehaviour());
 
 // Theme behaviour, media, assets and template tags
-$registrar->addInstance('Dxw\\MyTheme\\Theme\\Scripts', new \Dxw\MyTheme\Theme\Scripts(
-    $registrar->getInstance('Dxw\\Iguana\\Helpers')
+$registrar->addInstance(\Dxw\MyTheme\Theme\Scripts::class, new \Dxw\MyTheme\Theme\Scripts(
+    $registrar->getInstance(\Dxw\Iguana\Theme\Helpers::class)
 ));
-$registrar->addInstance('Dxw\\MyTheme\\Theme\\Media', new \Dxw\MyTheme\Theme\Media());
-$registrar->addInstance('Dxw\\MyTheme\\Theme\\Menus', new \Dxw\MyTheme\Theme\Menus());
-$registrar->addInstance('Dxw\\MyTheme\\Theme\\Widgets', new \Dxw\MyTheme\Theme\Widgets());
-$registrar->addInstance('Dxw\\MyTheme\\Theme\\Helpers', new \Dxw\MyTheme\Theme\Helpers());
-$registrar->addInstance('Dxw\\MyTheme\\Theme\\TitleTag', new \Dxw\MyTheme\Theme\TitleTag());
-$registrar->addInstance('Dxw\\MyTheme\\Theme\\Pagination', new \Dxw\MyTheme\Theme\Pagination(
-    $registrar->getInstance('Dxw\\Iguana\\Helpers')
+$registrar->addInstance(\Dxw\MyTheme\Theme\Media::class, new \Dxw\MyTheme\Theme\Media());
+$registrar->addInstance(\Dxw\MyTheme\Theme\Menus::class, new \Dxw\MyTheme\Theme\Menus());
+$registrar->addInstance(\Dxw\MyTheme\Theme\Widgets::class, new \Dxw\MyTheme\Theme\Widgets());
+$registrar->addInstance(\Dxw\MyTheme\Theme\Helpers::class, new \Dxw\MyTheme\Theme\Helpers());
+$registrar->addInstance(\Dxw\MyTheme\Theme\TitleTag::class, new \Dxw\MyTheme\Theme\TitleTag());
+$registrar->addInstance(\Dxw\MyTheme\Theme\Pagination::class, new \Dxw\MyTheme\Theme\Pagination(
+    $registrar->getInstance(\Dxw\Iguana\Theme\Helpers::class)
 ));
 
 // Post types and additional fields
-$registrar->addInstance('Dxw\\MyTheme\\Posts\\PostTypes', new \Dxw\MyTheme\Posts\PostTypes());
-$registrar->addInstance('Dxw\\MyTheme\\Posts\\CustomFields', new \Dxw\MyTheme\Posts\CustomFields());
+$registrar->addInstance(\Dxw\MyTheme\Posts\PostTypes::class, new \Dxw\MyTheme\Posts\PostTypes());
+$registrar->addInstance(\Dxw\MyTheme\Posts\CustomFields::class, new \Dxw\MyTheme\Posts\CustomFields());
