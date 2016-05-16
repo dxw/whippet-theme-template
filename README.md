@@ -35,11 +35,24 @@ CSS/JS assets are compiled into `build/` (`.map` files are gitignored). This can
 
 ## Code layout
 
+- `composer.json`
+  - [Composer](https://getcomposer.org/) dependencies
+- `vendor.phar`
+  - Composer's vendor directory, compiled into a PHAR file by [phar-install](https://github.com/dxw/phar-install)
+- `package.json`
+  - npm dependencies
+- `bower.json`
+  - bower dependencies
+- `Gruntfile.js`
+  - Configuration for building `assets/` to `build/`
+- `phpunit.xml`
+  - Necessary for PHPUnit tests
 - `app/`
+    - All your PHP apart from templates lives here
+    - `load.php`
+        - Loads composer, sets up autoloading, sets your namespace
     - `di.php`
-        - Loads everything in `app/`. (Loads composer dependencies, sets up autoloading)
-    - `Registrar.php`
-        - Where dependency injection and registration happens
+        - Constructs the dependency graph, and allows injection of dependencies
     - `Lib/`
         - TODO
     - `Posts/`
@@ -47,6 +60,7 @@ CSS/JS assets are compiled into `build/` (`.map` files are gitignored). This can
     - `Theme/`
         - TODO
 - `assets/`
+    - This is where your raw assets live. Post-compilation files live in `build/`
     - `img/`
         - Place for raw images (they get minified by grunt and put in `build/img/`)
     - `js/`
@@ -62,12 +76,10 @@ CSS/JS assets are compiled into `build/` (`.map` files are gitignored). This can
         - `templates/`
             - TODO
 - `build/`
-    - TODO
-- `lib/`
-    - TODO
+    - Compiled assets
 - `templates/`
     - `functions.php`
-        - TODO
+        - Just loads `app/load.php` and registers anything that needs registering
     - `layouts`
         - TODO
     - `partials`
@@ -76,18 +88,3 @@ CSS/JS assets are compiled into `build/` (`.map` files are gitignored). This can
         - TODO
 - `tests/`
     - TODO
-
-TODO:
-
-```
-├── vendor
-├── composer.json
-├── composer.lock
-├── bower.json
-├── Gruntfile.js
-├── LICENSE.txt
-├── package.json
-├── phpunit.xml
-├── README.md
-└── vendor.phar
-```
