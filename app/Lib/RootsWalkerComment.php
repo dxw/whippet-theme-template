@@ -7,7 +7,7 @@ namespace Dxw\MyTheme\Lib;
 //
 // @link http://getbootstrap.com/components/#media
 //
-class RootsWalkerComment extends \Walker_Comment
+class RootsWalkerComment extends \Walker_Comment implements \Dxw\Iguana\Registerable
 {
     public function start_lvl(&$output, $depth = 0, $args = array())
     {
@@ -60,7 +60,7 @@ class RootsWalkerComment extends \Walker_Comment
         echo "</div></li>\n";
     }
 
-    public function roots_get_avatar($avatar, $type)
+    public function rootsGetAvatar($avatar, $type)
     {
         if (!is_object($type)) {
             return $avatar;
@@ -73,6 +73,6 @@ class RootsWalkerComment extends \Walker_Comment
 
     public function register()
     {
-        add_filter('get_avatar', [$this, 'roots_get_avatar'], 10, 2);
+        add_filter('get_avatar', [$this, 'rootsGetAvatar'], 10, 2);
     }
 }
