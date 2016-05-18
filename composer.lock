@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4d3c57251a7baa77bb63bc3c8912c3fa",
-    "content-hash": "62e1e8ed2af3e8e13d88cce4ae2e3d63",
+    "hash": "da3749bd8ee14433234451afc05e741c",
+    "content-hash": "7078252a4abeee8279cb3d7aba582847",
     "packages": [
         {
             "name": "aura/autoload",
@@ -94,23 +94,58 @@
             "time": "2016-05-18 14:43:08"
         },
         {
-            "name": "dxw/iguana-theme",
+            "name": "dxw/iguana-extras",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/dxw/iguana-theme.git",
-                "reference": "a06f2886de7a88cba87945c94138addd09ce69f6"
+                "url": "https://github.com/dxw/iguana-extras.git",
+                "reference": "181869e32a5cb6a56f213e2bf1c12e28111dab96"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dxw/iguana-theme/zipball/a06f2886de7a88cba87945c94138addd09ce69f6",
-                "reference": "a06f2886de7a88cba87945c94138addd09ce69f6",
+                "url": "https://api.github.com/repos/dxw/iguana-extras/zipball/181869e32a5cb6a56f213e2bf1c12e28111dab96",
+                "reference": "181869e32a5cb6a56f213e2bf1c12e28111dab96",
                 "shasum": ""
             },
             "require": {
                 "dxw/iguana": "dev-master"
             },
             "require-dev": {
+                "10up/wp_mock": "^0.1.1",
+                "phpunit/phpunit": "4.8.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Dxw\\Iguana\\Extras\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "homepage": "https://github.com/dxw/iguana-extras",
+            "time": "2016-05-18 18:16:25"
+        },
+        {
+            "name": "dxw/iguana-theme",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dxw/iguana-theme.git",
+                "reference": "d3590f984703b44584a0ef8de0fa8b3073118577"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dxw/iguana-theme/zipball/d3590f984703b44584a0ef8de0fa8b3073118577",
+                "reference": "d3590f984703b44584a0ef8de0fa8b3073118577",
+                "shasum": ""
+            },
+            "require": {
+                "dxw/iguana": "dev-master"
+            },
+            "require-dev": {
+                "10up/wp_mock": "^0.1.1",
                 "mikey179/vfsstream": "^1.6",
                 "phpunit/phpunit": "4.8.*"
             },
@@ -125,7 +160,7 @@
                 "MIT"
             ],
             "homepage": "https://github.com/dxw/iguana-theme",
-            "time": "2016-05-18 15:16:19"
+            "time": "2016-05-18 18:19:45"
         },
         {
             "name": "dxw/pagination",
@@ -169,16 +204,16 @@
     "packages-dev": [
         {
             "name": "10up/wp_mock",
-            "version": "dev-master",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/10up/wp_mock.git",
-                "reference": "3e032aac29063cf03eec13946597338781bc7082"
+                "reference": "04e1e14fdcc4240a07f9f6c2e45029de5714dd3e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/10up/wp_mock/zipball/3e032aac29063cf03eec13946597338781bc7082",
-                "reference": "3e032aac29063cf03eec13946597338781bc7082",
+                "url": "https://api.github.com/repos/10up/wp_mock/zipball/04e1e14fdcc4240a07f9f6c2e45029de5714dd3e",
+                "reference": "04e1e14fdcc4240a07f9f6c2e45029de5714dd3e",
                 "shasum": ""
             },
             "require": {
@@ -190,11 +225,6 @@
                 "phpunit/phpunit": "~3.7"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-dev": "1.0.x-dev"
-                }
-            },
             "autoload": {
                 "psr-0": {
                     "WP_Mock\\": "./"
@@ -208,7 +238,7 @@
                 "GPL-2.0+"
             ],
             "description": "A mocking library to take the pain out of unit testing for WordPress",
-            "time": "2015-08-19 23:01:51"
+            "time": "2015-03-31 18:55:45"
         },
         {
             "name": "antecedent/patchwork",
@@ -306,7 +336,7 @@
         },
         {
             "name": "dxw/phar-install",
-            "version": "dev-master",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dxw/phar-install.git",
@@ -1401,8 +1431,7 @@
         "dxw/pagination": 20,
         "dxw/iguana": 20,
         "dxw/iguana-theme": 20,
-        "dxw/phar-install": 20,
-        "10up/wp_mock": 20
+        "dxw/iguana-extras": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
