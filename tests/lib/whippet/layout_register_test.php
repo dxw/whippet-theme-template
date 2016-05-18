@@ -11,11 +11,7 @@ class Lib_Whippet_LayoutRegister_Test extends PHPUnit_Framework_TestCase
     {
         \WP_Mock::tearDown();
 
-        $cls = new ReflectionClass(\Dxw\MyTheme\Lib\Whippet\Layout::class);
-
-        $property = $cls->getProperty('wordpress_template');
-        $property->setAccessible(true);
-        $property->setValue(null);
+        \Dxw\MyTheme\Lib\Whippet\Layout::$wordpress_template = null;
     }
 
     public function testRegister()
