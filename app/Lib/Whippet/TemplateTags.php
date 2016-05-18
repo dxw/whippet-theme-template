@@ -6,13 +6,7 @@ class TemplateTags
 {
     public function __construct(\Dxw\Iguana\Theme\Helpers $helpers)
     {
-        $helpers->registerFunction('w_requested_template', [$this, 'w_requested_template']);
         $helpers->registerFunction('w_template_title', [$this, 'w_template_title']);
-    }
-
-    public function w_requested_template()
-    {
-        require \Dxw\MyTheme\Lib\Whippet\Layout::$wordpress_template;
     }
 
     public static function w_template_warning()

@@ -3,7 +3,9 @@
 $this->addInstance(\Dxw\Iguana\Theme\Helpers::class, new \Dxw\Iguana\Theme\Helpers());
 
 // Libraries and support code
-$registrar->addInstance(\Dxw\MyTheme\Lib\Whippet\LayoutRegister::class, new \Dxw\MyTheme\Lib\Whippet\LayoutRegister());
+$registrar->addInstance(\Dxw\MyTheme\Lib\Whippet\LayoutRegister::class, new \Dxw\MyTheme\Lib\Whippet\LayoutRegister(
+    $registrar->getInstance(\Dxw\Iguana\Theme\Helpers::class)
+));
 $registrar->addInstance(\Dxw\MyTheme\Lib\Whippet\TemplateTags::class, new \Dxw\MyTheme\Lib\Whippet\TemplateTags(
     $registrar->getInstance(\Dxw\Iguana\Theme\Helpers::class)
 ));
