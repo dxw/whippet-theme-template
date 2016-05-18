@@ -65,12 +65,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dxw/iguana.git",
-                "reference": "5dbcb1d2b13cf23ca305a4a2c1d032a656911621"
+                "reference": "4d2e06ceb83a047c176f87488af88f9772b667e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dxw/iguana/zipball/5dbcb1d2b13cf23ca305a4a2c1d032a656911621",
-                "reference": "5dbcb1d2b13cf23ca305a4a2c1d032a656911621",
+                "url": "https://api.github.com/repos/dxw/iguana/zipball/4d2e06ceb83a047c176f87488af88f9772b667e9",
+                "reference": "4d2e06ceb83a047c176f87488af88f9772b667e9",
                 "shasum": ""
             },
             "require": {
@@ -91,7 +91,7 @@
                 "MIT"
             ],
             "homepage": "https://github.com/dxw/iguana",
-            "time": "2016-05-16 18:05:36"
+            "time": "2016-05-18 14:43:08"
         },
         {
             "name": "dxw/iguana-theme",
@@ -99,12 +99,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dxw/iguana-theme.git",
-                "reference": "09fc22e97686d9bb608bb5201796e7fef3292068"
+                "reference": "a06f2886de7a88cba87945c94138addd09ce69f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dxw/iguana-theme/zipball/09fc22e97686d9bb608bb5201796e7fef3292068",
-                "reference": "09fc22e97686d9bb608bb5201796e7fef3292068",
+                "url": "https://api.github.com/repos/dxw/iguana-theme/zipball/a06f2886de7a88cba87945c94138addd09ce69f6",
+                "reference": "a06f2886de7a88cba87945c94138addd09ce69f6",
                 "shasum": ""
             },
             "require": {
@@ -125,7 +125,7 @@
                 "MIT"
             ],
             "homepage": "https://github.com/dxw/iguana-theme",
-            "time": "2016-05-16 18:13:00"
+            "time": "2016-05-18 15:16:19"
         },
         {
             "name": "dxw/pagination",

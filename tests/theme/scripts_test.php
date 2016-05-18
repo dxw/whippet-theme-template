@@ -2,6 +2,8 @@
 
 class Theme_Scripts_Test extends PHPUnit_Framework_TestCase
 {
+    use \Dxw\Iguana\Theme\Testing;
+
     public function setUp()
     {
         \WP_Mock::setUp();
@@ -12,29 +14,15 @@ class Theme_Scripts_Test extends PHPUnit_Framework_TestCase
         \WP_Mock::tearDown();
     }
 
-    public function getHelpers()
+    public function testConstruct()
     {
-        $helpers = $this->getMockBuilder(\Dxw\Iguana\Theme\Helpers::class)
-        ->disableOriginalConstructor()
-        ->getMock();
-
-        return $helpers;
-    }
-
-    public function testInstantiate()
-    {
-        $helpers = $this->getHelpers();
-
-        $helpers->expects($this->exactly(1))
-        ->method('registerFunction')
-        ->will($this->returnCallback(function ($a, $b) {
-            $this->assertEquals('assetPath', $a);
-            $this->assertCount(2, $b);
-            $this->assertInstanceOf(\Dxw\MyTheme\Theme\Scripts::class, $b[0]);
-            $this->assertEquals('getUri', $b[1]);
-        }));
+        $helpers = $this->getHelpers(\Dxw\MyTheme\Theme\Scripts::class, [
+            'assetPath' => 'getUri',
+        ]);
 
         $scripts = new \Dxw\MyTheme\Theme\Scripts($helpers);
+
+        $this->assertFunctionsRegistered();
     }
 
     public function testRegister()

@@ -2,6 +2,8 @@
 
 class Lib_Whippet_LayoutRegister_Test extends PHPUnit_Framework_TestCase
 {
+    use \Dxw\Iguana\Theme\Testing;
+
     public function setUp()
     {
         \WP_Mock::setUp();
@@ -25,29 +27,15 @@ class Lib_Whippet_LayoutRegister_Test extends PHPUnit_Framework_TestCase
         $layoutRegister->register();
     }
 
-    private function getHelpers()
-    {
-        $helpers = $this->getMockBuilder(\Dxw\Iguana\Theme\Helpers::class)
-        ->disableOriginalConstructor()
-        ->getMock();
-
-        return $helpers;
-    }
-
     public function testConstruct()
     {
-        $helpers = $this->getHelpers();
-
-        $helpers->expects($this->exactly(1))
-        ->method('registerFunction')
-        ->will($this->returnCallback(function ($a, $b) {
-            $this->assertEquals('w_requested_template', $a);
-            $this->assertCount(2, $b);
-            $this->assertInstanceOf(\Dxw\MyTheme\Lib\Whippet\LayoutRegister::class, $b[0]);
-            $this->assertEquals('wRequestedTemplate', $b[1]);
-        }));
+        $helpers = $this->getHelpers(\Dxw\MyTheme\Lib\Whippet\LayoutRegister::class, [
+            'w_requested_template' => 'wRequestedTemplate',
+        ]);
 
         $layoutRegister = new \Dxw\MyTheme\Lib\Whippet\LayoutRegister($helpers);
+
+        $this->assertFunctionsRegistered();
     }
 
     public function testWRequestedTemplate()
