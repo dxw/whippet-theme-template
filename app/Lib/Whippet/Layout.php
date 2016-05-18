@@ -5,7 +5,7 @@ namespace Dxw\MyTheme\Lib\Whippet;
 //
 // Theme wrapper, lifted from Roots, with some modifications. Thanks, Roots! (See: roots.io).
 //
-class Layout implements \Dxw\Iguana\Registerable
+class Layout
 {
     // Stores the full path to the template file WordPress says we should use
     public static $wordpress_template;
@@ -31,7 +31,7 @@ class Layout implements \Dxw\Iguana\Registerable
         return locate_template($this->templates);
     }
 
-    public function apply($wordpress_template)
+    public static function apply($wordpress_template)
     {
         self::$wordpress_template = dirname($wordpress_template).'/'.basename($wordpress_template);
         self::$base = basename(self::$wordpress_template, '.php');
@@ -41,10 +41,5 @@ class Layout implements \Dxw\Iguana\Registerable
         }
 
         return new self();
-    }
-
-    public function register()
-    {
-        add_filter('template_include', array($this, 'apply'), 99);
     }
 }
