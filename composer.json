@@ -12,7 +12,7 @@
         }
     ],
     "require-dev": {
-        "dxw/phar-install": "dev-master",
+        "dxw/phar-install": "^1.0",
         "10up/wp_mock": "^0.1.1",
         "phpunit/phpunit": "4.8.*",
         "mikey179/vfsStream": "^1.6"
@@ -28,6 +28,7 @@
     "require": {
         "dxw/pagination": "dev-master",
         "dxw/iguana": "dev-master",
-        "dxw/iguana-theme": "dev-feature/layout-etc"
+        "dxw/iguana-theme": "dev-master",
+        "dxw/iguana-extras": "dev-master"
     }
 }
