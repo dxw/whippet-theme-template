@@ -22,24 +22,11 @@ class Lib_Whippet_Layout_Test extends PHPUnit_Framework_TestCase
         $property->setValue(null);
     }
 
-    public function testRegister()
-    {
-        $layout = new \Dxw\MyTheme\Lib\Whippet\Layout();
-
-        $this->assertInstanceOf(\Dxw\Iguana\Registerable::class, $layout);
-
-        \WP_Mock::expectFilterAdded('template_include', [$layout, 'apply'], 99);
-
-        $layout->register();
-    }
-
     public function testApply()
     {
-        $layout = new \Dxw\MyTheme\Lib\Whippet\Layout();
-
         $this->assertInstanceOf(
             \Dxw\MyTheme\Lib\Whippet\Layout::class,
-            $layout->apply('x/y/z.php')
+            \Dxw\MyTheme\Lib\Whippet\Layout::apply('x/y/z.php')
         );
 
         $this->assertEquals(
