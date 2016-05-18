@@ -177,12 +177,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dxw/iguana-theme.git",
-                "reference": "c88574869db990ab70679488eeba5d2554f80597"
+                "reference": "dafd216d74dbabc3e8996e452ba068db7d137417"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dxw/iguana-theme/zipball/c88574869db990ab70679488eeba5d2554f80597",
-                "reference": "c88574869db990ab70679488eeba5d2554f80597",
+                "url": "https://api.github.com/repos/dxw/iguana-theme/zipball/dafd216d74dbabc3e8996e452ba068db7d137417",
+                "reference": "dafd216d74dbabc3e8996e452ba068db7d137417",
                 "shasum": ""
             },
             "require": {
@@ -204,7 +204,7 @@
                 "MIT"
             ],
             "homepage": "https://github.com/dxw/iguana-theme",
-            "time": "2016-05-18 17:51:24"
+            "time": "2016-05-18 17:57:09"
         },
         {
             "name": "dxw/pagination",

@@ -1,18 +1,16 @@
 <?php
 
-$this->addInstance(\Dxw\Iguana\Theme\Helpers::class, new \Dxw\Iguana\Theme\Helpers());
+$registrar->addInstance(\Dxw\Iguana\Theme\Helpers::class, new \Dxw\Iguana\Theme\Helpers());
 $registrar->addInstance(\Dxw\Iguana\Theme\LayoutRegister::class, new \Dxw\Iguana\Theme\LayoutRegister(
     $registrar->getInstance(\Dxw\Iguana\Theme\Helpers::class)
 ));
+$registrar->addInstance(\Dxw\Iguana\Theme\UseAtom::class, new \Dxw\Iguana\Theme\UseAtom());
 
 // Libraries and support code
 $registrar->addInstance(\Dxw\MyTheme\Lib\Whippet\TemplateTags::class, new \Dxw\MyTheme\Lib\Whippet\TemplateTags(
     $registrar->getInstance(\Dxw\Iguana\Theme\Helpers::class)
 ));
 $registrar->addInstance(\Dxw\MyTheme\Lib\RootsWalkerComment::class, new \Dxw\MyTheme\Lib\RootsWalkerComment());
-
-// WordPress core behaviour adjustments
-$registrar->addInstance(\Dxw\MyTheme\CoreBehaviour::class, new \Dxw\MyTheme\CoreBehaviour());
 
 // Theme behaviour, media, assets and template tags
 $registrar->addInstance(\Dxw\MyTheme\Theme\Scripts::class, new \Dxw\MyTheme\Theme\Scripts(
