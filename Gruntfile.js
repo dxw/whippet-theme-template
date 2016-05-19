@@ -3,12 +3,13 @@ module.exports = function (grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-watch')
   grunt.loadNpmTasks('grunt-contrib-sass')
-  grunt.loadNpmTasks('grunt-contrib-uglify')
   grunt.loadNpmTasks('grunt-contrib-copy')
   grunt.loadNpmTasks('grunt-img')
   grunt.loadNpmTasks('grunt-contrib-clean')
   grunt.loadNpmTasks('grunt-standard')
   grunt.loadNpmTasks('grunt-modernizr')
+  grunt.loadNpmTasks('grunt-browserify')
+  grunt.loadNpmTasks('grunt-exorcise')
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -43,20 +44,25 @@ module.exports = function (grunt) {
       }
     },
 
-    uglify: {
+    browserify: {
+      options: {
+        browserifyOptions: {
+          debug: true
+        }
+      },
       production: {
-        options: {
-          sourceMap: true,
-          preserveComments: 'none'
-        },
         files: {
-          'build/main.min.js': [
-            'assets/js/plugins/*.js',
-            'assets/js/main.js'
-          ],
-          'build/lib/jquery.min.js': [
-            'bower_components/jquery/dist/jquery.js'
-          ]
+          'build/main.min.js': 'assets/js/main.js',
+          'build/lib/jquery.min.js': 'bower_components/jquery/dist/jquery.js'
+        }
+      }
+    },
+
+    exorcise: {
+      production: {
+        files: {
+          'build/main.min.js.map': 'build/main.min.js',
+          'build/lib/jquery.min.js.map': 'build/lib/jquery.min.js'
         }
       }
     },
@@ -74,8 +80,8 @@ module.exports = function (grunt) {
         tasks: ['sass']
       },
       js: {
-        files: ['assets/js/main.js', 'assets/js/plugins/*.js'],
-        tasks: ['standard', 'uglify']
+        files: ['assets/js/*.js', 'assets/js/*/*.js'],
+        tasks: ['standard', 'browserify', 'exorcise']
       }
     },
 
@@ -112,7 +118,8 @@ module.exports = function (grunt) {
     'img',
     'sass',
     'standard',
-    'uglify',
+    'browserify',
+    'exorcise',
     'modernizr'
   ])
 }
