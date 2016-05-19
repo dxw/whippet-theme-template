@@ -12,18 +12,11 @@ class Theme_TitleTag_Test extends PHPUnit_Framework_TestCase
         \WP_Mock::tearDown();
     }
 
-    private function getRegistrar()
-    {
-        $registrar = $this->getMockBuilder('\\Dxw\\Iguana\\Registrar')
-        ->disableOriginalConstructor()
-        ->getMock();
-
-        return $registrar;
-    }
-
     public function testRegister()
     {
-        $titleTag = new \Dxw\MyTheme\Theme\TitleTag($this->getRegistrar());
+        $titleTag = new \Dxw\MyTheme\Theme\TitleTag();
+
+        $this->assertInstanceOf(\Dxw\Iguana\Registerable::class, $titleTag);
 
         \WP_Mock::wpFunction('add_theme_support', [
             'args' => ['title-tag'],
