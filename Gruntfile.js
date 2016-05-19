@@ -8,6 +8,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-img')
   grunt.loadNpmTasks('grunt-contrib-clean')
   grunt.loadNpmTasks('grunt-standard')
+  grunt.loadNpmTasks('grunt-modernizr')
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -24,6 +25,24 @@ module.exports = function (grunt) {
       }
     },
 
+    modernizr: {
+      production: {
+        'crawl': false,
+        'customTests': [],
+        'dest': 'build/lib/modernizr.min.js',
+        'tests': [
+          'flexbox',
+          'svgasimg'
+        ],
+        'options': [
+          'html5printshiv',
+          'html5shiv',
+          'setClasses'
+        ],
+        'uglify': true
+      }
+    },
+
     uglify: {
       production: {
         options: {
@@ -34,10 +53,6 @@ module.exports = function (grunt) {
           'build/main.min.js': [
             'assets/js/plugins/*.js',
             'assets/js/main.js'
-          ],
-          'build/lib/modernizr.min.js': [
-            'bower_components/modernizr/feature-detects/*.js',
-            'bower_components/modernizr/modernizr.js'
           ],
           'build/lib/jquery.min.js': [
             'bower_components/jquery/dist/jquery.js'
@@ -97,6 +112,7 @@ module.exports = function (grunt) {
     'img',
     'sass',
     'standard',
-    'uglify'
+    'uglify',
+    'modernizr'
   ])
 }
