@@ -8,6 +8,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-modernizr')
   grunt.loadNpmTasks('grunt-browserify')
   grunt.loadNpmTasks('grunt-exorcise')
+  grunt.loadNpmTasks('grunt-contrib-copy')
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -50,8 +51,7 @@ module.exports = function (grunt) {
       },
       production: {
         files: {
-          'build/main.min.js': 'assets/js/main.js',
-          'build/lib/jquery.min.js': 'bower_components/jquery/dist/jquery.js'
+          'build/main.min.js': 'assets/js/main.js'
         }
       }
     },
@@ -59,8 +59,15 @@ module.exports = function (grunt) {
     exorcise: {
       production: {
         files: {
-          'build/main.min.js.map': 'build/main.min.js',
-          'build/lib/jquery.min.js.map': 'build/lib/jquery.min.js'
+          'build/main.min.js.map': 'build/main.min.js'
+        }
+      }
+    },
+
+    copy: {
+      production: {
+        files: {
+          'build/lib/jquery.min.js': 'bower_components/jquery/dist/jquery.min.js'
         }
       }
     },
@@ -114,6 +121,7 @@ module.exports = function (grunt) {
     'img',
     'sass',
     'standard',
+    'copy',
     'browserify',
     'exorcise',
     'modernizr'
