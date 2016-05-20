@@ -12,23 +12,13 @@ This theme template makes use of [iguana](https://github.com/dxw/iguana) for dep
 
 ## Code layout
 
-- `app/`
-    - All PHP except for templates and tests lives here
-- `templates/`
-    - The code in here usually lives in the root of a theme (i.e. `style.css`, `functions.php`, etc), but we like to keep that separate
-- `tests/`
-    - PHP tests
-- `assets/`
-    - This is where your raw assets live. Post-compilation files live in `build/`
-    - `img/`
-        - Raw images (they get minified by grunt and put in `build/img/`)
-    - `js/`
-        - JavaScript
-    - `scss/`
-        - SCSS
-- `build/`
-    - Compiled assets
-    - This includes `.map` files, but those are `.gitignored`
+PHP for templates lives in `templates/`, everything else lives in `app/` and is tested with [PHPUnit](https://phpunit.de/) tests that live in `tests/`.
+
+The main JavaScript file is `assets/js/main.js`. It is compiled into `build/main.min.js` with [browserify](http://browserify.org/) so `main.js` is typically just a list of `require()`s.
+
+The main SCSS file is `assets/scss/main.scss`. It is compiled into `build/main.min.css` with [SASS](http://sass-lang.com/) so `main.scss` is typically just a list of `@import`s.
+
+Images live in `assets/img/`. They are pre-processed/minified into `build/img/`.
 
 ## Automated bits
 
