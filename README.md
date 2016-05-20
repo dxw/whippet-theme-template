@@ -20,32 +20,19 @@ The main SCSS file is `assets/scss/main.scss`. It is compiled into `build/main.m
 
 Images live in `assets/img/`. They are pre-processed/minified into `build/img/`.
 
-## Automated bits
+## Commands
 
-### Testing
-
-PHP tests (part of `.travis.yml`):
+Run PHP tests:
 
     vendor/bin/phpunit
 
-JavaScript does not have tests yet.
+Build JS/CSS:
 
-### Linting
+    grunt
 
-PHP linting (part of `.travis.yml`):
+Build JS/CSS upon file modification:
 
-    composer global require fabpot/php-cs-fixer
-    php-cs-fixer
-
-JS linting (not part of `.travis.yml`, but part of `grunt watch`):
-
-    grunt standard
-
-### Building
-
-Composer dependencies are compiled into `vendor.phar` which should then be checked into git. This is run automatically when running `composer install` or `composer update`.
-
-CSS/JS assets are compiled into `build/` (`.map` files are gitignored). This can be run once via `grunt`, or assets can be built when files are modified by running `grunt watch`. Must run `npm install` before running `grunt`.
+    grunt watch
 
 ## Guide
 
