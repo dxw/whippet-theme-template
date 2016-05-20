@@ -36,18 +36,69 @@ Build JS/CSS upon file modification:
 
 ## Guide
 
-### Adding a new helper function
+### Calling some functions when the theme is loaded
 
-Create a new file, say `app/Foobar.php`:
+In vanilla WordPress, you would add this to the end of `functions.php`:
+
+```
+register_post_type('abc', [ /* ... */ ]);
+function my_theme_init() {
+    // ...
+}
+add_action('init', 'my_theme_init');
+```
+
+In an iguana-style theme, you would put this in an new file, say `app/RegisterStuff.php`:
 
 ```
 <?php
 
-class Foobar
+namespace Dxw\MyTheme;
+
+class RegisterStuff implements \Dxw\Iguana\Registerable
+{
+    public function register()
+    {
+        register_post_type('abc', [ /* ... */  ]);
+        add_action('init', [$this, 'init']);
+    }
+
+    public function init()
+    {
+        // ...
+    }
+}
+```
+
+And add a line to the end of `app/di.php` to instantiate this class:
+
+```
+$registrar->addInstance(\Dxw\MyTheme\RegisterStuff::class, new \Dxw\MyTheme\RegisterStuff());
+```
+
+### Adding a new helper function
+
+In vanilla WordPress you might add a helper functions to the end of `functions.php` like so:
+
+```
+function foo()
+{
+    ...
+}
+```
+
+But with iguana, we define that in a class too, say `app/HelperFunctions.php`:
+
+```
+<?php
+
+namespace Dxw\MyTheme;
+
+class HelperFunctions
 {
     public function __construct(\Dxw\Iguana\Theme\Helpers $helpers)
     {
-        $helpers->registerFunction('foobar', [$this, 'foobar']);
+        $helpers->registerFunction('foo', [$this, 'foo']);
     }
 
     public function foobar()
@@ -57,30 +108,12 @@ class Foobar
 }
 ```
 
-And instead of adding a `require` to `functions.php`, add a line like this to `app/di.php`:
+And then we add a line like this to `app/di.php`:
 
 ```
-$registrar->addInstance(\Namespace\MyTheme\Foobar::class, new \Namespace\MyTheme\Foobar(
+$registrar->addInstance(\Namespace\MyTheme\HelperFunctions::class, new \Namespace\MyTheme\HelperFunctions(
     $registrar->getInstance(\Dxw\Iguana\Theme\Helpers::class)
 ));
 ```
 
-And instead of using `foobar()` in your template code, use `h()->foobar()`.
-
-### Registering post types, actions, ACF fields, etc.
-
-Create a new file, say `app/RegisterStuff.php`:
-
-```
-<?php
-
-class RegisterStuff implements \Dxw\Iguana\Registerable
-{
-    public function register()
-    {
-        register_post_type('stuff', [
-            // ...
-        ]);
-    }
-}
-```
+And instead of using `foo()` in your template code, use `h()->foo()`.
