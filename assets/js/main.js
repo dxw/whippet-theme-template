@@ -1,5 +1,3 @@
-/* globals jQuery */
+'use strict'
 
-jQuery(function ($) {
-  'use strict'
-})
+require('./common')

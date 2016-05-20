@@ -2,7 +2,7 @@
 
 namespace Dxw\MyTheme\Theme;
 
-class TitleTag
+class TitleTag implements \Dxw\Iguana\Registerable
 {
     public function register()
     {
