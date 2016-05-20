@@ -6,6 +6,10 @@ A template that should have everything you need to start a new theme with.
 
 This theme is not finished yet. We'd love it if you want to have a play and give us your thoughts - and pull requests gratefully received. But probably best to tread carefully.
 
+## iguana
+
+This theme template makes use of [iguana](https://github.com/dxw/iguana) for dependency injection and auto-registration, [iguana-theme](https://github.com/dxw/iguana-theme) for helper functions, and [iguana-extras](https://github.com/dxw/iguana-extras) for other little modules.
+
 ## Code layout
 
 - `app/`
