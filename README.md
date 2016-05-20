@@ -1,23 +1,119 @@
-# Health warning
+# whippet-theme-template
+
+A template that should have everything you need to start a new theme with.
+
+## Health warning
 
 This theme is not finished yet. We'd love it if you want to have a play and give us your thoughts - and pull requests gratefully received. But probably best to tread carefully.
 
+## iguana
 
-## About this theme
+This theme template makes use of [iguana](https://github.com/dxw/iguana) for dependency injection and auto-registration, [iguana-theme](https://github.com/dxw/iguana-theme) for helper functions, and [iguana-extras](https://github.com/dxw/iguana-extras) for other little modules.
 
-This is the base theme for use in Whippet applications. You don't have to use it, but they play nice together.
+## Code layout
 
+PHP for templates lives in `templates/`, everything else lives in `app/` and is tested with [PHPUnit](https://phpunit.de/) tests that live in `tests/`.
 
-## Roadmap 
+The main JavaScript file is `assets/js/main.js`. It is compiled into `build/main.min.js` with [browserify](http://browserify.org/) so `main.js` is typically just a list of `require()`s.
 
-* H: Whippet should generate a domain for internalisation - the domain is currently 'roots'?
-* H: Check that we have everything in /app
-* H: Make layouts work
-* H: Make sure that index.php works through a template
-* H: Check the TODOs sprinkled liberally across the theme directory and answer questions and/or fix stuff
-* H: Layout for not being logged in
-* https://github.com/jgable/grunt-lesslint
-* ?? https://www.npmjs.org/package/grunt-bump
-* ?? https://npmjs.org/package/grunt-modernizr
-* ?? https://npmjs.org/package/grunt-contrib-livereload
-* A whippet linter
+The main SCSS file is `assets/scss/main.scss`. It is compiled into `build/main.min.css` with [SASS](http://sass-lang.com/) so `main.scss` is typically just a list of `@import`s.
+
+Images live in `assets/img/`. They are pre-processed/minified into `build/img/`.
+
+## Commands
+
+Run PHP tests:
+
+    vendor/bin/phpunit
+
+Build JS/CSS:
+
+    grunt
+
+Build JS/CSS upon file modification:
+
+    grunt watch
+
+## Guide
+
+### Calling some functions when the theme is loaded
+
+In vanilla WordPress, you would add this to the end of `functions.php`:
+
+```
+register_post_type('abc', [ /* ... */ ]);
+function my_theme_init() {
+    // ...
+}
+add_action('init', 'my_theme_init');
+```
+
+In an iguana-style theme, you would put this in an new file, say `app/RegisterStuff.php`:
+
+```
+<?php
+
+namespace Dxw\MyTheme;
+
+class RegisterStuff implements \Dxw\Iguana\Registerable
+{
+    public function register()
+    {
+        register_post_type('abc', [ /* ... */  ]);
+        add_action('init', [$this, 'init']);
+    }
+
+    public function init()
+    {
+        // ...
+    }
+}
+```
+
+And add a line to the end of `app/di.php` to instantiate this class:
+
+```
+$registrar->addInstance(\Dxw\MyTheme\RegisterStuff::class, new \Dxw\MyTheme\RegisterStuff());
+```
+
+### Adding a new helper function
+
+In vanilla WordPress you might add a helper functions to the end of `functions.php` like so:
+
+```
+function foo()
+{
+    ...
+}
+```
+
+But with iguana, we define that in a class too, say `app/HelperFunctions.php`:
+
+```
+<?php
+
+namespace Dxw\MyTheme;
+
+class HelperFunctions
+{
+    public function __construct(\Dxw\Iguana\Theme\Helpers $helpers)
+    {
+        $helpers->registerFunction('foo', [$this, 'foo']);
+    }
+
+    public function foobar()
+    {
+        // ...
+    }
+}
+```
+
+And then we add a line like this to `app/di.php`:
+
+```
+$registrar->addInstance(\Namespace\MyTheme\HelperFunctions::class, new \Namespace\MyTheme\HelperFunctions(
+    $registrar->getInstance(\Dxw\Iguana\Theme\Helpers::class)
+));
+```
+
+And instead of using `foo()` in your template code, use `h()->foo()`.
