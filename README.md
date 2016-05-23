@@ -117,3 +117,7 @@ $registrar->addInstance(\Namespace\MyTheme\HelperFunctions::class, new \Namespac
 ```
 
 And instead of using `foo()` in your template code, use `h()->foo()`.
+
+## Licence
+
+[MIT](COPYING.md)
