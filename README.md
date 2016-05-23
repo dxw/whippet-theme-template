@@ -1,10 +1,10 @@
 # whippet-theme-template
 
-A template that should have everything you need to start a new theme with.
+A template with everything you need to make a modern WordPress theme.
 
 ## Health warning
 
-This theme is not finished yet. We'd love it if you want to have a play and give us your thoughts - and pull requests gratefully received. But probably best to tread carefully.
+This theme template is primarily made for dxw's needs, but we hope that it will be of some use to other WordPress developers. We'd love it if you want to have a play and give us your thoughts - and pull requests are gratefully received.
 
 ## iguana
 
@@ -117,3 +117,7 @@ $registrar->addInstance(\Namespace\MyTheme\HelperFunctions::class, new \Namespac
 ```
 
 And instead of using `foo()` in your template code, use `h()->foo()`.
+
+## Licence
+
+[MIT](COPYING.md)
