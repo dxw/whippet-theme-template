@@ -118,6 +118,14 @@ module.exports = function (grunt) {
     })
   })
 
+  // Hack to make `img` task work
+  grunt.registerTask('img-mkdir', 'mkdir build/img', function () {
+    var fs = require('fs')
+
+    fs.mkdirSync('build')
+    fs.mkdirSync('build/img')
+  })
+
   grunt.renameTask('watch', '_watch')
 
   grunt.registerTask('watch', [
@@ -128,6 +136,7 @@ module.exports = function (grunt) {
   grunt.registerTask('default', [
     'clean',
     'bower-install',
+    'img-mkdir',
     'img',
     'sass',
     'standard',
