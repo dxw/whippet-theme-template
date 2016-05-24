@@ -51,7 +51,7 @@ class Theme_Scripts_Test extends PHPUnit_Framework_TestCase
             'return' => 'http://foo.bar.invalid/cat/dog',
         ]);
 
-        $this->assertEquals('http://foo.bar.invalid/cat/build/meow', $scripts->getAssetPath('meow'));
+        $this->assertEquals('http://foo.bar.invalid/cat/static/meow', $scripts->getAssetPath('meow'));
     }
 
     public function testAssetPath()
@@ -63,7 +63,7 @@ class Theme_Scripts_Test extends PHPUnit_Framework_TestCase
             'return' => 'http://foo.bar.invalid/cat/dog',
         ]);
 
-        $this->expectOutputString('_http://foo.bar.invalid/cat/build/meow_');
+        $this->expectOutputString('_http://foo.bar.invalid/cat/static/meow_');
         $scripts->assetPath('meow');
     }
 
@@ -82,22 +82,22 @@ class Theme_Scripts_Test extends PHPUnit_Framework_TestCase
         ]);
 
         \WP_Mock::wpFunction('wp_enqueue_script', [
-            'args' => ['jquery', 'http://a.invalid/build/lib/jquery.min.js'],
+            'args' => ['jquery', 'http://a.invalid/static/lib/jquery.min.js'],
             'times' => 1,
         ]);
 
         \WP_Mock::wpFunction('wp_enqueue_script', [
-            'args' => ['modernizr', 'http://a.invalid/build/lib/modernizr.min.js'],
+            'args' => ['modernizr', 'http://a.invalid/static/lib/modernizr.min.js'],
             'times' => 1,
         ]);
 
         \WP_Mock::wpFunction('wp_enqueue_script', [
-            'args' => ['main', 'http://a.invalid/build/main.min.js', ['jquery', 'modernizr'], '', true],
+            'args' => ['main', 'http://a.invalid/static/main.min.js', ['jquery', 'modernizr'], '', true],
             'times' => 1,
         ]);
 
         \WP_Mock::wpFunction('wp_enqueue_style', [
-            'args' => ['main', 'http://a.invalid/build/main.min.css'],
+            'args' => ['main', 'http://a.invalid/static/main.min.css'],
             'times' => 1,
         ]);
 
@@ -122,9 +122,9 @@ class Theme_Scripts_Test extends PHPUnit_Framework_TestCase
             '        <!-- Prefetch internal image assets -->',
             '        <link rel="prefetch" href="#">',
             '',
-            '        <link rel="apple-touch-icon-precomposed" href="_http://a.invalid/build/img/apple-touch-icon-precomposed.png_">',
+            '        <link rel="apple-touch-icon-precomposed" href="_http://a.invalid/static/img/apple-touch-icon-precomposed.png_">',
             '',
-            '        <link rel="icon" type="image/png" href="_http://a.invalid/build/img/shortcut-icon.png_">',
+            '        <link rel="icon" type="image/png" href="_http://a.invalid/static/img/shortcut-icon.png_">',
             '        ',
         ]));
 
