@@ -9,9 +9,18 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-browserify')
   grunt.loadNpmTasks('grunt-exorcise')
   grunt.loadNpmTasks('grunt-contrib-copy')
+  grunt.loadNpmTasks('grunt-contrib-clean')
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+
+    clean: {
+      production: {
+        src: [
+          'build/'
+        ]
+      }
+    },
 
     sass: {
       production: {
@@ -117,6 +126,7 @@ module.exports = function (grunt) {
   ])
 
   grunt.registerTask('default', [
+    'clean',
     'bower-install',
     'img',
     'sass',
