@@ -2,7 +2,7 @@ module.exports = function (grunt) {
   'use strict'
 
   grunt.loadNpmTasks('grunt-contrib-watch')
-  grunt.loadNpmTasks('grunt-contrib-sass')
+  grunt.loadNpmTasks('grunt-sass')
   grunt.loadNpmTasks('grunt-img')
   grunt.loadNpmTasks('grunt-standard')
   grunt.loadNpmTasks('grunt-modernizr')
@@ -23,11 +23,11 @@ module.exports = function (grunt) {
     },
 
     sass: {
+      options: {
+        outputStyle: 'compressed',
+        sourceMap: true
+      },
       production: {
-        options: {
-          style: 'compressed',
-          sourcemap: 'auto'
-        },
         files: {
           'static/main.min.css': 'assets/scss/main.scss'
         }
