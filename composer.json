@@ -15,7 +15,8 @@
         "dxw/phar-install": "^1.0",
         "10up/wp_mock": "^0.1.1",
         "phpunit/phpunit": "4.8.*",
-        "mikey179/vfsStream": "^1.6"
+        "mikey179/vfsStream": "^1.6",
+        "fabpot/php-cs-fixer": "1.11.4"
     },
     "autoload": {
         "psr-4": {
@@ -26,9 +27,9 @@
         "post-update-cmd": "vendor/bin/phar-install"
     },
     "require": {
-        "dxw/pagination": "dev-master",
-        "dxw/iguana": "dev-master",
-        "dxw/iguana-theme": "dev-master",
-        "dxw/iguana-extras": "dev-master"
+        "dxw/pagination": "^1.0",
+        "dxw/iguana": "^1.0",
+        "dxw/iguana-theme": "^1.0",
+        "dxw/iguana-extras": "^1.0"
     }
 }
