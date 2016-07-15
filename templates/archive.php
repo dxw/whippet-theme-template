@@ -1,5 +1,5 @@
 <header>
-    <h1><?php echo w_template_title(); ?></h1>
+    <h1><?php echo h()->w_template_title(); ?></h1>
     <?php if (category_description()) :?>
         <h2><?php echo category_description(); ?></h2>
     <?php endif; ?>
