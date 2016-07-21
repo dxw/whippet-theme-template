@@ -60,7 +60,8 @@ module.exports = function (grunt) {
       },
       production: {
         files: {
-          'static/main.min.js': 'assets/js/main.js'
+          'static/main.min.js': 'assets/js/main.js',
+          'static/admin.min.js': 'assets/js/admin.js'
         }
       }
     },
@@ -68,7 +69,8 @@ module.exports = function (grunt) {
     exorcise: {
       production: {
         files: {
-          'static/main.min.js.map': 'static/main.min.js'
+          'static/main.min.js.map': 'static/main.min.js',
+          'static/admin.min.js.map': 'static/admin.min.js'
         }
       }
     },
@@ -103,7 +105,8 @@ module.exports = function (grunt) {
       production: {
         src: [
           'Gruntfile.js',
-          'assets/js/main.js'
+          'assets/js/main.js',
+          'assets/js/admin.js'
         ]
       }
     }
