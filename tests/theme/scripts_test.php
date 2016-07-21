@@ -37,6 +37,7 @@ class Theme_Scripts_Test extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf(\Dxw\Iguana\Registerable::class, $scripts);
 
         \WP_Mock::expectActionAdded('wp_enqueue_scripts', [$scripts, 'wpEnqueueScripts']);
+        \WP_Mock::expectActionAdded('admin_enqueue_scripts', [$scripts, 'adminEnqueueScripts']);
         \WP_Mock::expectActionAdded('wp_print_scripts', [$scripts, 'wpPrintScripts']);
 
         $scripts->register();
@@ -102,6 +103,23 @@ class Theme_Scripts_Test extends PHPUnit_Framework_TestCase
         ]);
 
         $scripts->wpEnqueueScripts();
+    }
+
+    public function testAdminEnqueueScripts()
+    {
+        $scripts = new \Dxw\MyTheme\Theme\Scripts($this->getHelpers());
+
+        \WP_Mock::wpFunction('get_stylesheet_directory_uri', [
+            'args' => [],
+            'return' => 'http://a.invalid/zzz',
+        ]);
+
+        \WP_Mock::wpFunction('wp_enqueue_script', [
+            'args' => ['admin', 'http://a.invalid/static/admin.min.js', ['jquery'], '', true],
+            'times' => 1,
+        ]);
+
+        $scripts->adminEnqueueScripts();
     }
 
     public function testWpPrintScripts()
