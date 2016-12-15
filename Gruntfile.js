@@ -10,6 +10,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-exorcise')
   grunt.loadNpmTasks('grunt-contrib-copy')
   grunt.loadNpmTasks('grunt-contrib-clean')
+  grunt.loadNpmTasks('grunt-svgmin')
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -88,6 +89,20 @@ module.exports = function (grunt) {
       }
     },
 
+    svgmin: {
+      options: {},
+      dist: {
+        files: [
+          {
+            expand: true,
+            cwd: 'assets/img/',
+            src: ['*.svg'],
+            dest: 'static/img/'
+          }
+        ]
+      }
+    },
+
     _watch: {
       less: {
         files: ['assets/scss/*.scss', 'assets/scss/*/*.scss'],
@@ -138,6 +153,7 @@ module.exports = function (grunt) {
     'bower-install',
     'img-mkdir',
     'img',
+    'svgmin',
     'sass',
     'standard',
     'copy',
