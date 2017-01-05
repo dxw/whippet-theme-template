@@ -56,12 +56,6 @@ class Scripts implements \Dxw\Iguana\Registerable
         ?>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!-- Prefetch external asset dns -->
-        <link rel="dns-prefetch" href="#">
-
-        <!-- Prefetch internal image assets -->
-        <link rel="prefetch" href="#">
-
         <link rel="apple-touch-icon-precomposed" href="<?php $this->assetPath('img/apple-touch-icon-precomposed.png') ?>">
 
         <link rel="icon" type="image/png" href="<?php $this->assetPath('img/shortcut-icon.png') ?>">

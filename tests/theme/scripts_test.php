@@ -116,12 +116,6 @@ class Theme_Scripts_Test extends PHPUnit_Framework_TestCase
         $this->expectOutputString(implode("\n", [
             '        <meta name="viewport" content="width=device-width, initial-scale=1.0">',
             '',
-            '        <!-- Prefetch external asset dns -->',
-            '        <link rel="dns-prefetch" href="#">',
-            '',
-            '        <!-- Prefetch internal image assets -->',
-            '        <link rel="prefetch" href="#">',
-            '',
             '        <link rel="apple-touch-icon-precomposed" href="_http://a.invalid/static/img/apple-touch-icon-precomposed.png_">',
             '',
             '        <link rel="icon" type="image/png" href="_http://a.invalid/static/img/shortcut-icon.png_">',
