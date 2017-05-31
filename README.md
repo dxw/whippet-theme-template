@@ -24,7 +24,7 @@ Images live in `assets/img/`. They are pre-processed/minified into `static/img/`
 
 Run PHP tests:
 
-    vendor/bin/phpunit
+    vendor/bin/peridot spec
 
 Build JS/CSS:
 
