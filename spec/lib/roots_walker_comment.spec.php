@@ -34,6 +34,13 @@ describe(\Dxw\MyTheme\Lib\RootsWalkerComment::class, function () {
             $result = $this->rootsWalkerComment->rootsGetAvatar('a', 'b');
             expect($result)->to->be->equal('a');
         });
+    });
+
+    describe('->rootsGetAvatar()', function () {
+        it('gets the avatar', function () {
+            $result = $this->rootsWalkerComment->rootsGetAvatar('a', 'b');
+            expect($result)->to->be->equal('a');
+        });
 
         context('when given an object', function () {
             it('displays a media object', function () {
