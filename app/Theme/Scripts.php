@@ -4,6 +4,8 @@ namespace Dxw\MyTheme\Theme;
 
 class Scripts implements \Dxw\Iguana\Registerable
 {
+    protected $manifest = [];
+
     public function __construct(\Dxw\Iguana\Theme\Helpers $helpers)
     {
         $helpers->registerFunction('assetPath', [$this, 'assetPath']);
@@ -18,7 +20,21 @@ class Scripts implements \Dxw\Iguana\Registerable
 
     public function getAssetPath($path)
     {
-        return dirname(get_stylesheet_directory_uri()).'/static/'.$path;
+        // Cache the decoded manifest so that we only read it in once.
+        if (empty($this->manifest)) {
+            $manifest_path = get_stylesheet_directory() . '/../static/manifest.json';
+            $this->manifest = file_exists($manifest_path) ?
+                json_decode(file_get_contents($manifest_path), true)
+                : [];
+        }
+        // If the manifest contains the requested file, return the hashed name.
+        if (array_key_exists($path, $this->manifest)) {
+            $path = $this->manifest[$path];
+        }
+
+        // Assume the file has not been hashed when it was not found within the
+        // manifest.
+        return wp_make_link_relative(get_template_directory_uri() . '/../static/' . $path);
     }
 
     public function assetPath($path)

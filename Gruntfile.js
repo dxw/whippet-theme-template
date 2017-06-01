@@ -11,6 +11,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy')
   grunt.loadNpmTasks('grunt-contrib-clean')
   grunt.loadNpmTasks('grunt-svgmin')
+  grunt.loadNpmTasks('grunt-asset-fingerprint')
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -25,13 +26,39 @@ module.exports = function (grunt) {
 
     sass: {
       options: {
-        outputStyle: 'compressed',
-        sourceMap: true
+        outputStyle: 'expanded',
+        sourceMap: false
       },
       production: {
         files: {
           'static/main.min.css': 'assets/scss/main.scss'
         }
+      }
+    },
+
+    assetFingerprint: {
+      'options': {
+        'manifestPath': 'static/manifest.json',
+        'findAndReplaceFiles': [
+          'static/**/*.{js,css,html,xml}'
+        ],
+        'keepOriginalFiles': false
+      },
+      'dist': {
+        'files': [
+          {
+            'expand': true,
+            'cwd': 'static',
+            'src': [
+              'img/**/*',
+              'fonts/**/*',
+              'js/app.js',
+              'css/app.css',
+              '*'
+            ],
+            'dest': 'static'
+          }
+        ]
       }
     },
 
@@ -158,7 +185,7 @@ module.exports = function (grunt) {
     'standard',
     'copy',
     'browserify',
-    'exorcise',
-    'modernizr'
+    'modernizr',
+    'assetFingerprint'
   ])
 }
