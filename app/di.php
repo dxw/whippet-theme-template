@@ -10,7 +10,6 @@ $registrar->addInstance(\Dxw\Iguana\Extras\UseAtom::class, new \Dxw\Iguana\Extra
 $registrar->addInstance(\Dxw\MyTheme\Lib\Whippet\TemplateTags::class, new \Dxw\MyTheme\Lib\Whippet\TemplateTags(
     $registrar->getInstance(\Dxw\Iguana\Theme\Helpers::class)
 ));
-$registrar->addInstance(\Dxw\MyTheme\Lib\RootsWalkerComment::class, new \Dxw\MyTheme\Lib\RootsWalkerComment());
 
 // Theme behaviour, media, assets and template tags
 $registrar->addInstance(\Dxw\MyTheme\Theme\Scripts::class, new \Dxw\MyTheme\Theme\Scripts(

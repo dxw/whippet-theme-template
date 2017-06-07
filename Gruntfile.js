@@ -26,7 +26,12 @@ module.exports = function (grunt) {
     sass: {
       options: {
         outputStyle: 'compressed',
-        sourceMap: true
+        sourceMap: true,
+        includePaths: [
+          require('bourbon').includePaths,
+          require('bourbon-neat').includePaths,
+          require('node-normalize-scss').includePaths
+        ]
       },
       production: {
         files: {

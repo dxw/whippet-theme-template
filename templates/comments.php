@@ -10,8 +10,8 @@ if (post_password_required()) {
     <section id="comments">
         <h3><?php printf(_n('One Response to &ldquo;%2$s&rdquo;', '%1$s Responses to &ldquo;%2$s&rdquo;', get_comments_number(), 'roots'), number_format_i18n(get_comments_number()), get_the_title()); ?></h3>
 
-        <ol class="media-list">
-            <?php wp_list_comments(array('walker' => new \Dxw\MyTheme\Lib\RootsWalkerComment())); // TODO: What does this walker do, do we need it? How do we make sure this pulls through the comment partial? ?>
+        <ol class="comment-list">
+            <?php wp_list_comments(); ?>
         </ol>
 
         <?php if (get_comment_pages_count() > 1 && get_option('page_comments')) : ?>

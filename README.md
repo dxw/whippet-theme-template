@@ -12,13 +12,17 @@ This theme template makes use of [iguana](https://github.com/dxw/iguana) for dep
 
 ## Code layout
 
-PHP for templates lives in `templates/`, everything else lives in `app/` and is tested with [PHPUnit](https://phpunit.de/) tests that live in `tests/`.
+- PHP for templates lives in `templates/`, everything else lives in `app/` and is tested with [Peridot](http://peridot-php.github.io/) tests that live in `spec/`.
+- The main JavaScript file is `assets/js/main.js`. It is compiled into `static/main.min.js` with [browserify](http://browserify.org/) so `main.js` is typically just a list of `require()`s.
+- The main SCSS file is `assets/scss/main.scss`. It is compiled into `static/main.min.css` with [SASS](http://sass-lang.com/) so `main.scss` is typically just a list of `@import`s.
+- Images live in `assets/img/`. They are pre-processed/minified into `static/img/`.
 
-The main JavaScript file is `assets/js/main.js`. It is compiled into `static/main.min.js` with [browserify](http://browserify.org/) so `main.js` is typically just a list of `require()`s.
+## SASS Libraries
 
-The main SCSS file is `assets/scss/main.scss`. It is compiled into `static/main.min.css` with [SASS](http://sass-lang.com/) so `main.scss` is typically just a list of `@import`s.
+- [Normalize.css](http://necolas.github.io/normalize.css/) - makes browsers render all elements more consistently
+- [Bourbon](http://bourbon.io/) - lightweight mixin library
+- [Neat](http://neat.bourbon.io/) - lightweight and flexible grid
 
-Images live in `assets/img/`. They are pre-processed/minified into `static/img/`.
 
 ## Commands
 
