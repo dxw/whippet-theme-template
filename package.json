@@ -12,5 +12,9 @@
     "grunt-modernizr": "^1.0.2",
     "grunt-standard": "^2.0.0",
     "grunt-svgmin": "^4.0.0"
+  },
+  "dependencies": {
+    "bourbon": "^4.3.4",
+    "bourbon-neat": "^2.0.0"
   }
 }
