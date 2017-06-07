@@ -1,0 +1,57 @@
+<?php
+
+namespace Dxw\MyTheme\Theme;
+
+use Dxw\Iguana\Registerable;
+
+class Plugins implements Registerable
+{
+    protected $required;
+    protected $abspath;
+
+    public function __construct(array $required = [], $abspath = null)
+    {
+        $this->required = $required;
+        $this->abspath = $abspath ?? ABSPATH;
+    }
+
+    public function register()
+    {
+        add_action('after_switch_theme', [$this, 'checkDependencies']);
+    }
+
+    public function checkDependencies()
+    {
+        $pluginsToActivate = $this->findPluginsToActivate();
+        if (!empty($pluginsToActivate) && !function_exists('get_plugins')) {
+            require_once($this->abspath . 'wp-admin/includes/plugin.php');
+        }
+        array_map([$this, 'addNotice'], $pluginsToActivate);
+    }
+
+    public function addNotice($plugin)
+    {
+        $pluginData = get_plugin_data(WP_PLUGIN_DIR.'/'.$plugin);
+        $pluginName = !empty($pluginData['Name']) ? $pluginData['Name'] : $plugin;
+        ?>
+        <div class="notice notice-warning">
+            <p><strong><?php echo esc_html($pluginName) ?></strong> is a required plugin and is not active.
+                You must activate it for this theme to work.
+                <a href="<?php echo admin_url('plugins.php') ?>">Visit plugins page</a>
+            </p>
+        </div>
+        <?php
+
+    }
+
+    /**
+     * @return array
+     */
+    private function findPluginsToActivate()
+    {
+        $pluginsToActivate = array_diff($this->required,
+            apply_filters('active_plugins', get_option('active_plugins'))
+        );
+        return $pluginsToActivate;
+    }
+}

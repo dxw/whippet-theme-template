@@ -1,0 +1,134 @@
+<?php
+
+describe(\Dxw\MyTheme\Theme\Plugins::class, function () {
+    beforeEach(function () {
+        \WP_Mock::setUp();
+        \WP_Mock::wpFunction('esc_html', [
+            'return' => function ($a) {
+                return '_'.$a.'_';
+            },
+        ]);
+        $this->abspath = \org\bovigo\vfs\vfsStream::setup()->url() . '/';
+        $this->plugins = new \Dxw\MyTheme\Theme\Plugins(
+            [
+                'path-to/a-required-plugin.php',
+                'advanced-custom-fields-pro/acf.php'
+            ],
+            $this->abspath
+        );
+        mkdir($this->abspath.'wp-admin/includes', 0755, true);
+        file_put_contents($this->abspath.'/wp-admin/includes/plugin.php', '');
+        if (!defined('WP_PLUGIN_DIR')) {
+            define('WP_PLUGIN_DIR', '/path/to/plugins');
+        }
+    });
+
+    afterEach(function () {
+        \WP_Mock::tearDown();
+    });
+
+    it('is registrable', function () {
+        expect($this->plugins)->to->be->an->instanceof(\Dxw\Iguana\Registerable::class);
+    });
+
+    describe('->register()', function () {
+        it('registers theme activation hook', function () {
+            \WP_Mock::expectActionAdded('after_switch_theme', [$this->plugins, 'checkDependencies']);
+            $this->plugins->register();
+        });
+    });
+
+    describe('->checkDependencies()', function () {
+        it('flags any required plugins that aren\'t activated', function () {
+            WP_Mock::wpFunction('get_option', [
+                'args' => ['active_plugins'],
+                'times' => 1,
+                'return' => [
+                    'some-other/plugin.php'
+                ]
+            ]);
+            WP_Mock::wpFunction('get_plugin_data', [
+                'args' => [WP_PLUGIN_DIR.'/path-to/a-required-plugin.php'],
+                'times' => 1,
+                'return' => [
+                    'Name' => 'A plugin'
+                ]
+            ]);
+            WP_Mock::wpFunction('get_plugin_data', [
+                'args' => [WP_PLUGIN_DIR.'/advanced-custom-fields-pro/acf.php'],
+                'times' => 1,
+                'return' => [
+                    'Name' => 'Advanced Custom Fields Pro'
+                ]
+            ]);
+            WP_Mock::wpFunction('admin_url', [
+                'args' => ['plugins.php'],
+                'times' => 2,
+                'return' => '__http://localhost/wp-admin/plugins.php__'
+            ]);
+            ob_start();
+            $this->plugins->checkDependencies();
+            $result = ob_get_contents();
+            ob_end_clean();
+            expect($result)->to->contain('<div class="notice notice-warning">');
+            expect($result)->to->contain('<a href="__http://localhost/wp-admin/plugins.php__">Visit plugins page</a>');
+            expect($result)->to->contain('</div>');
+
+            expect($result)->to->contain('<strong>_A plugin_</strong>');
+            expect($result)->to->contain('<strong>_Advanced Custom Fields Pro_</strong>');
+        });
+
+        context('when the plugins are already active', function () {
+            it('doesn\'t print anything', function () {
+                WP_Mock::wpFunction('get_option', [
+                    'args' => ['active_plugins'],
+                    'times' => 1,
+                    'return' => [
+                        'some-other/plugin.php',
+                        'path-to/a-required-plugin.php',
+                        'advanced-custom-fields-pro/acf.php'
+                    ]
+                ]);
+
+                ob_start();
+                $this->plugins->checkDependencies();
+                $result = ob_get_contents();
+                ob_end_clean();
+                expect($result)->to->be->empty;
+            });
+        });
+
+        context('when there\'s no plugin data available', function () {
+            it('displays the path of the plugin instead', function () {
+                WP_Mock::wpFunction('get_option', [
+                    'args' => ['active_plugins'],
+                    'times' => 1,
+                    'return' => [
+                        'some-other/plugin.php',
+                        'advanced-custom-fields-pro/acf.php'
+                    ]
+                ]);
+                WP_Mock::wpFunction('get_plugin_data', [
+                    'args' => [WP_PLUGIN_DIR.'/path-to/a-required-plugin.php'],
+                    'times' => 1,
+                    'return' => [
+                        'Name' => ''
+                    ]
+                ]);
+                WP_Mock::wpFunction('admin_url', [
+                    'args' => ['plugins.php'],
+                    'times' => 1,
+                    'return' => '__http://localhost/wp-admin/plugins.php__'
+                ]);
+                ob_start();
+                $this->plugins->checkDependencies();
+                $result = ob_get_contents();
+                ob_end_clean();
+
+                expect($result)->to->contain('<strong>_path-to/a-required-plugin.php_</strong>');
+            });
+        });
+    });
+
+
+});
