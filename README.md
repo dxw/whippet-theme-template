@@ -2,6 +2,12 @@
 
 A template with everything you need to make a modern WordPress theme.
 
+## Installation
+
+Generate a new theme via [whippet](https://github.com/dxw/whippet)
+
+- `whippet generate theme --d=directory-name`
+
 ## Health warning
 
 This theme template is primarily made for dxw's needs, but we hope that it will be of some use to other WordPress developers. We'd love it if you want to have a play and give us your thoughts - and pull requests are gratefully received.
