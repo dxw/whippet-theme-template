@@ -9,13 +9,6 @@ describe(\Dxw\MyTheme\Theme\Plugins::class, function () {
             },
         ]);
         $this->abspath = \org\bovigo\vfs\vfsStream::setup()->url() . '/';
-        $this->plugins = new \Dxw\MyTheme\Theme\Plugins(
-            [
-                'path-to/a-required-plugin.php',
-                'advanced-custom-fields-pro/acf.php'
-            ],
-            $this->abspath
-        );
         mkdir($this->abspath.'wp-admin/includes', 0755, true);
         file_put_contents($this->abspath.'/wp-admin/includes/plugin.php', '');
         if (!defined('WP_PLUGIN_DIR')) {
@@ -28,13 +21,21 @@ describe(\Dxw\MyTheme\Theme\Plugins::class, function () {
     });
 
     it('is registrable', function () {
-        expect($this->plugins)->to->be->an->instanceof(\Dxw\Iguana\Registerable::class);
+        $plugins = new \Dxw\MyTheme\Theme\Plugins(
+            [],
+            $this->abspath
+        );
+        expect($plugins)->to->be->an->instanceof(\Dxw\Iguana\Registerable::class);
     });
 
     describe('->register()', function () {
         it('registers theme activation hook', function () {
-            \WP_Mock::expectActionAdded('after_switch_theme', [$this->plugins, 'checkDependencies']);
-            $this->plugins->register();
+            $plugins = new \Dxw\MyTheme\Theme\Plugins(
+                [],
+                $this->abspath
+            );
+            \WP_Mock::expectActionAdded('after_switch_theme', [$plugins, 'checkDependencies']);
+            $plugins->register();
         });
     });
 
@@ -66,8 +67,15 @@ describe(\Dxw\MyTheme\Theme\Plugins::class, function () {
                 'times' => 2,
                 'return' => '__http://localhost/wp-admin/plugins.php__'
             ]);
+            $plugins = new \Dxw\MyTheme\Theme\Plugins(
+                [
+                    'path-to/a-required-plugin.php',
+                    'advanced-custom-fields-pro/acf.php'
+                ],
+                $this->abspath
+            );
             ob_start();
-            $this->plugins->checkDependencies();
+            $plugins->checkDependencies();
             $result = ob_get_contents();
             ob_end_clean();
             expect($result)->to->contain('<div class="notice notice-warning">');
@@ -89,9 +97,15 @@ describe(\Dxw\MyTheme\Theme\Plugins::class, function () {
                         'advanced-custom-fields-pro/acf.php'
                     ]
                 ]);
-
+                $plugins = new \Dxw\MyTheme\Theme\Plugins(
+                    [
+                        'path-to/a-required-plugin.php',
+                        'advanced-custom-fields-pro/acf.php'
+                    ],
+                    $this->abspath
+                );
                 ob_start();
-                $this->plugins->checkDependencies();
+                $plugins->checkDependencies();
                 $result = ob_get_contents();
                 ob_end_clean();
                 expect($result)->to->be->empty;
@@ -120,8 +134,15 @@ describe(\Dxw\MyTheme\Theme\Plugins::class, function () {
                     'times' => 1,
                     'return' => '__http://localhost/wp-admin/plugins.php__'
                 ]);
+                $plugins = new \Dxw\MyTheme\Theme\Plugins(
+                    [
+                        'path-to/a-required-plugin.php',
+                        'advanced-custom-fields-pro/acf.php'
+                    ],
+                    $this->abspath
+                );
                 ob_start();
-                $this->plugins->checkDependencies();
+                $plugins->checkDependencies();
                 $result = ob_get_contents();
                 ob_end_clean();
 
@@ -129,6 +150,4 @@ describe(\Dxw\MyTheme\Theme\Plugins::class, function () {
             });
         });
     });
-
-
 });
