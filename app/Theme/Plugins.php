@@ -23,7 +23,10 @@ class Plugins implements Registerable
     public function checkDependencies()
     {
         $pluginsToActivate = $this->findPluginsToActivate();
-        if (!empty($pluginsToActivate) && !function_exists('get_plugins')) {
+        if (empty($pluginsToActivate)) {
+            return;
+        }
+        if (!function_exists('get_plugin_data')) {
             require_once($this->path_to_wordpress . 'wp-admin/includes/plugin.php');
         }
         array_map([$this, 'addNotice'], $pluginsToActivate);
@@ -41,7 +44,6 @@ class Plugins implements Registerable
             </p>
         </div>
         <?php
-
     }
 
     /**
