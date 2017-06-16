@@ -7,12 +7,12 @@ use Dxw\Iguana\Registerable;
 class Plugins implements Registerable
 {
     protected $required;
-    protected $abspath;
+    protected $path_to_wordpress;
 
-    public function __construct(array $required = [], $abspath = null)
+    public function __construct(array $required = [], $path_to_wordpress = ABSPATH)
     {
         $this->required = $required;
-        $this->abspath = $abspath ?? ABSPATH;
+        $this->path_to_wordpress = $path_to_wordpress;
     }
 
     public function register()
@@ -24,7 +24,7 @@ class Plugins implements Registerable
     {
         $pluginsToActivate = $this->findPluginsToActivate();
         if (!empty($pluginsToActivate) && !function_exists('get_plugins')) {
-            require_once($this->abspath . 'wp-admin/includes/plugin.php');
+            require_once($this->path_to_wordpress . 'wp-admin/includes/plugin.php');
         }
         array_map([$this, 'addNotice'], $pluginsToActivate);
     }

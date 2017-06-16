@@ -8,9 +8,9 @@ describe(\Dxw\MyTheme\Theme\Plugins::class, function () {
                 return '_'.$a.'_';
             },
         ]);
-        $this->abspath = \org\bovigo\vfs\vfsStream::setup()->url() . '/';
-        mkdir($this->abspath.'wp-admin/includes', 0755, true);
-        file_put_contents($this->abspath.'/wp-admin/includes/plugin.php', '');
+        $this->fake_path_to_wp = \org\bovigo\vfs\vfsStream::setup()->url() . '/';
+        mkdir($this->fake_path_to_wp.'wp-admin/includes', 0755, true);
+        file_put_contents($this->fake_path_to_wp.'/wp-admin/includes/plugin.php', '');
         if (!defined('WP_PLUGIN_DIR')) {
             define('WP_PLUGIN_DIR', '/path/to/plugins');
         }
@@ -23,7 +23,7 @@ describe(\Dxw\MyTheme\Theme\Plugins::class, function () {
     it('is registrable', function () {
         $plugins = new \Dxw\MyTheme\Theme\Plugins(
             [],
-            $this->abspath
+            $this->fake_path_to_wp
         );
         expect($plugins)->to->be->an->instanceof(\Dxw\Iguana\Registerable::class);
     });
@@ -32,7 +32,7 @@ describe(\Dxw\MyTheme\Theme\Plugins::class, function () {
         it('registers theme activation hook', function () {
             $plugins = new \Dxw\MyTheme\Theme\Plugins(
                 [],
-                $this->abspath
+                $this->fake_path_to_wp
             );
             \WP_Mock::expectActionAdded('after_switch_theme', [$plugins, 'checkDependencies']);
             $plugins->register();
@@ -72,7 +72,7 @@ describe(\Dxw\MyTheme\Theme\Plugins::class, function () {
                     'path-to/a-required-plugin.php',
                     'advanced-custom-fields-pro/acf.php'
                 ],
-                $this->abspath
+                $this->fake_path_to_wp
             );
             ob_start();
             $plugins->checkDependencies();
@@ -102,7 +102,7 @@ describe(\Dxw\MyTheme\Theme\Plugins::class, function () {
                         'path-to/a-required-plugin.php',
                         'advanced-custom-fields-pro/acf.php'
                     ],
-                    $this->abspath
+                    $this->fake_path_to_wp
                 );
                 ob_start();
                 $plugins->checkDependencies();
@@ -139,7 +139,7 @@ describe(\Dxw\MyTheme\Theme\Plugins::class, function () {
                         'path-to/a-required-plugin.php',
                         'advanced-custom-fields-pro/acf.php'
                     ],
-                    $this->abspath
+                    $this->fake_path_to_wp
                 );
                 ob_start();
                 $plugins->checkDependencies();
