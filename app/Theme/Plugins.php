@@ -9,10 +9,10 @@ class Plugins implements Registerable
     protected $required;
     protected $path_to_wordpress;
 
-    public function __construct(array $required = [], $path_to_wordpress = ABSPATH)
+    public function __construct(array $required = [])
     {
         $this->required = $required;
-        $this->path_to_wordpress = $path_to_wordpress;
+        $this->path_to_wordpress = ABSPATH;
     }
 
     public function register()
@@ -44,6 +44,7 @@ class Plugins implements Registerable
             </p>
         </div>
         <?php
+
     }
 
     /**

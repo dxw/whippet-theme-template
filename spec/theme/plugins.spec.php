@@ -8,9 +8,6 @@ describe(\Dxw\MyTheme\Theme\Plugins::class, function () {
                 return '_'.$a.'_';
             },
         ]);
-        $this->fake_path_to_wp = \org\bovigo\vfs\vfsStream::setup()->url() . '/';
-        mkdir($this->fake_path_to_wp.'wp-admin/includes', 0755, true);
-        file_put_contents($this->fake_path_to_wp.'/wp-admin/includes/plugin.php', '');
         if (!defined('WP_PLUGIN_DIR')) {
             define('WP_PLUGIN_DIR', '/path/to/plugins');
         }
@@ -21,19 +18,13 @@ describe(\Dxw\MyTheme\Theme\Plugins::class, function () {
     });
 
     it('is registrable', function () {
-        $plugins = new \Dxw\MyTheme\Theme\Plugins(
-            [],
-            $this->fake_path_to_wp
-        );
+        $plugins = new \Dxw\MyTheme\Theme\Plugins([]);
         expect($plugins)->to->be->an->instanceof(\Dxw\Iguana\Registerable::class);
     });
 
     describe('->register()', function () {
         it('registers theme activation hook', function () {
-            $plugins = new \Dxw\MyTheme\Theme\Plugins(
-                [],
-                $this->fake_path_to_wp
-            );
+            $plugins = new \Dxw\MyTheme\Theme\Plugins([]);
             \WP_Mock::expectActionAdded('after_switch_theme', [$plugins, 'checkDependencies']);
             $plugins->register();
         });
@@ -65,21 +56,18 @@ describe(\Dxw\MyTheme\Theme\Plugins::class, function () {
             WP_Mock::wpFunction('admin_url', [
                 'args' => ['plugins.php'],
                 'times' => 2,
-                'return' => '__http://localhost/wp-admin/plugins.php__'
+                'return' => 'http://localhost/wp-admin/plugins.php'
             ]);
-            $plugins = new \Dxw\MyTheme\Theme\Plugins(
-                [
-                    'path-to/a-required-plugin.php',
-                    'advanced-custom-fields-pro/acf.php'
-                ],
-                $this->fake_path_to_wp
-            );
+            $plugins = new \Dxw\MyTheme\Theme\Plugins([
+                'path-to/a-required-plugin.php',
+                'advanced-custom-fields-pro/acf.php'
+            ]);
             ob_start();
             $plugins->checkDependencies();
             $result = ob_get_contents();
             ob_end_clean();
             expect($result)->to->contain('<div class="notice notice-warning">');
-            expect($result)->to->contain('<a href="__http://localhost/wp-admin/plugins.php__">Visit plugins page</a>');
+            expect($result)->to->contain('<a href="http://localhost/wp-admin/plugins.php">Visit plugins page</a>');
             expect($result)->to->contain('</div>');
 
             expect($result)->to->contain('<strong>_A plugin_</strong>');
@@ -97,13 +85,10 @@ describe(\Dxw\MyTheme\Theme\Plugins::class, function () {
                         'advanced-custom-fields-pro/acf.php'
                     ]
                 ]);
-                $plugins = new \Dxw\MyTheme\Theme\Plugins(
-                    [
-                        'path-to/a-required-plugin.php',
-                        'advanced-custom-fields-pro/acf.php'
-                    ],
-                    $this->fake_path_to_wp
-                );
+                $plugins = new \Dxw\MyTheme\Theme\Plugins([
+                    'path-to/a-required-plugin.php',
+                    'advanced-custom-fields-pro/acf.php'
+                ]);
                 ob_start();
                 $plugins->checkDependencies();
                 $result = ob_get_contents();
@@ -132,15 +117,12 @@ describe(\Dxw\MyTheme\Theme\Plugins::class, function () {
                 WP_Mock::wpFunction('admin_url', [
                     'args' => ['plugins.php'],
                     'times' => 1,
-                    'return' => '__http://localhost/wp-admin/plugins.php__'
+                    'return' => 'http://localhost/wp-admin/plugins.php'
                 ]);
-                $plugins = new \Dxw\MyTheme\Theme\Plugins(
-                    [
-                        'path-to/a-required-plugin.php',
-                        'advanced-custom-fields-pro/acf.php'
-                    ],
-                    $this->fake_path_to_wp
-                );
+                $plugins = new \Dxw\MyTheme\Theme\Plugins([
+                    'path-to/a-required-plugin.php',
+                    'advanced-custom-fields-pro/acf.php'
+                ]);
                 ob_start();
                 $plugins->checkDependencies();
                 $result = ob_get_contents();
