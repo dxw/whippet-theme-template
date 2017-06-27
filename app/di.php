@@ -27,3 +27,8 @@ $registrar->addInstance(\Dxw\MyTheme\Theme\Pagination::class, new \Dxw\MyTheme\T
 // Post types and additional fields
 $registrar->addInstance(\Dxw\MyTheme\Posts\PostTypes::class, new \Dxw\MyTheme\Posts\PostTypes());
 $registrar->addInstance(\Dxw\MyTheme\Posts\CustomFields::class, new \Dxw\MyTheme\Posts\CustomFields());
+
+// Plugin dependency check - pass in any required plugins
+$registrar->addInstance(\Dxw\MyTheme\Theme\Plugins::class, new \Dxw\MyTheme\Theme\Plugins([
+//    'advanced-custom-fields/acf.php', // Path to main plugin file
+]));
