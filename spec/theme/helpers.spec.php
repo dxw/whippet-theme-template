@@ -30,8 +30,12 @@ describe(\Dxw\MyTheme\Theme\Helpers::class, function () {
             expect($result)->to->be->equal(implode("\n", [
                 '        <script type="text/javascript">',
                 '            var _gaq = _gaq || [];',
-                "            _gaq.push(['_setAccount', 'TRACKING_CODE']);",
+                "            var TRACKING_CODE = ''; // Put the Google Analytics tracking code here",
+                "            _gaq.push(['_setAccount', TRACKING_CODE]);",
                 "            _gaq.push(['_trackPageview']);",
+                '            if (!TRACKING_CODE.length) {',
+                "              console.warn('Google Analytics requires a tracking code to function correctly');",
+                '            }',
                 '',
                 '            (function() {',
                 "                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;",

@@ -1,5 +1,13 @@
-<?php
+<article>
+    <header>
+        <h1><?php the_title(); ?></h1>
+    </header>
 
-while (have_posts()) : the_post();
-get_template_part('partials/page');
-  endwhile;
+    <div class="entry content rich-text">
+        <?php if (has_post_thumbnail()) : ?>
+            <?php the_post_thumbnail('large'); ?>
+        <?php endif; ?>
+        <?php the_content(); ?>
+    </div>
+
+</article>
