@@ -129,15 +129,6 @@ module.exports = function (grunt) {
     }
   })
 
-  grunt.registerTask('bower-install', 'Installs bower deps', function () {
-    var done = this.async()
-    var bower = require('bower')
-
-    bower.commands.install().on('end', function () {
-      done()
-    })
-  })
-
   // Hack to make `img` task work
   grunt.registerTask('img-mkdir', 'mkdir static/img', function () {
     var fs = require('fs')
@@ -155,7 +146,6 @@ module.exports = function (grunt) {
 
   grunt.registerTask('default', [
     'clean',
-    'bower-install',
     'img-mkdir',
     'img',
     'svgmin',
