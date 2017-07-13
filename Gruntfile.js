@@ -35,7 +35,8 @@ module.exports = function (grunt) {
       },
       production: {
         files: {
-          'static/main.min.css': 'assets/scss/main.scss'
+          'static/main.min.css': 'assets/scss/main.scss',
+          'static/admin.min.css': 'assets/scss/admin.scss'
         }
       }
     },

@@ -51,6 +51,11 @@ class Scripts implements \Dxw\Iguana\Registerable
         wp_enqueue_style('main',      $this->getAssetPath('main.min.css'));
     }
 
+    public function wpAdminEnqueueScripts()
+    {
+        wp_enqueue_style('admin', $this->getAssetPath('admin.min.css'));
+    }
+
     public function wpPrintScripts()
     {
         ?>
