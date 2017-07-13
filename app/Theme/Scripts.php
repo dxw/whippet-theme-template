@@ -13,6 +13,7 @@ class Scripts implements \Dxw\Iguana\Registerable
     public function register()
     {
         add_action('wp_enqueue_scripts', [$this, 'wpEnqueueScripts']);
+        add_action('admin_enqueue_scripts', [$this, 'wpAdminEnqueueScripts']);
         add_action('wp_print_scripts', [$this, 'wpPrintScripts']);
     }
 
@@ -53,6 +54,7 @@ class Scripts implements \Dxw\Iguana\Registerable
 
     public function wpAdminEnqueueScripts()
     {
+        wp_enqueue_script('admin', $this->getAssetPath('admin.min.js'));
         wp_enqueue_style('admin', $this->getAssetPath('admin.min.css'));
     }
 
