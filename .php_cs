@@ -9,6 +9,5 @@ return \Symfony\CS\Config\Config::create()
     ->exclude('static')
     ->exclude('templates')
     ->exclude('node_modules')
-    ->exclude('bower_components')
     ->in(__DIR__)
 );
