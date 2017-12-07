@@ -1,9 +1,9 @@
 <?php
 
-describe(\Dxw\MyTheme\Theme\Helpers::class, function () {
+describe(\Dxw\MyTheme\Theme\Analytics::class, function () {
     beforeEach(function () {
         \WP_Mock::setUp();
-        $this->helpers = new \Dxw\MyTheme\Theme\Helpers();
+        $this->analytics = new \Dxw\MyTheme\Theme\Analytics();
     });
 
     afterEach(function () {
@@ -11,20 +11,20 @@ describe(\Dxw\MyTheme\Theme\Helpers::class, function () {
     });
 
     it('is registrable', function () {
-        expect($this->helpers)->to->be->an->instanceof(\Dxw\Iguana\Registerable::class);
+        expect($this->analytics)->to->be->an->instanceof(\Dxw\Iguana\Registerable::class);
     });
 
     describe('->register()', function () {
         it('registers actions', function () {
-            WP_Mock::expectActionAdded('wp_footer', [$this->helpers, 'wpFooter']);
-            $this->helpers->register();
+            WP_Mock::expectActionAdded('wp_footer', [$this->analytics, 'wpFooter']);
+            $this->analytics->register();
         });
     });
 
     describe('->wpFooter()', function () {
         it('adds HTML to the footer', function () {
             ob_start();
-            $this->helpers->wpFooter();
+            $this->analytics->wpFooter();
             $result = ob_get_contents();
             ob_end_clean();
             expect($result)->to->be->equal(implode("\n", [

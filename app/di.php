@@ -18,7 +18,7 @@ $registrar->addInstance(\Dxw\MyTheme\Theme\Scripts::class, new \Dxw\MyTheme\Them
 $registrar->addInstance(\Dxw\MyTheme\Theme\Media::class, new \Dxw\MyTheme\Theme\Media());
 $registrar->addInstance(\Dxw\MyTheme\Theme\Menus::class, new \Dxw\MyTheme\Theme\Menus());
 $registrar->addInstance(\Dxw\MyTheme\Theme\Widgets::class, new \Dxw\MyTheme\Theme\Widgets());
-$registrar->addInstance(\Dxw\MyTheme\Theme\Helpers::class, new \Dxw\MyTheme\Theme\Helpers());
+$registrar->addInstance(\Dxw\MyTheme\Theme\Analytics::class, new \Dxw\MyTheme\Theme\Analytics());
 $registrar->addInstance(\Dxw\MyTheme\Theme\TitleTag::class, new \Dxw\MyTheme\Theme\TitleTag());
 $registrar->addInstance(\Dxw\MyTheme\Theme\Pagination::class, new \Dxw\MyTheme\Theme\Pagination(
     $registrar->getInstance(\Dxw\Iguana\Theme\Helpers::class)
