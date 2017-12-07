@@ -12,20 +12,20 @@ class Analytics implements \Dxw\Iguana\Registerable
     public function wpFooter()
     {
         ?>
-        <script type="text/javascript">
-            var _gaq = _gaq || [];
-            var TRACKING_CODE = ''; // Put the Google Analytics tracking code here
-            _gaq.push(['_setAccount', TRACKING_CODE]);
-            _gaq.push(['_trackPageview']);
+        <script>
+            var TRACKING_CODE = ''; //Put the Google Analytics tracking code here
             if (!TRACKING_CODE.length) {
-              console.warn('Google Analytics requires a tracking code to function correctly');
+                console.warn('Google Analytics requires a tracking code to function correctly');
             }
-
             (function() {
                 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                ga.src = 'https://www.googletagmanager.com/gtag/js?id=' + TRACKING_CODE;
                 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
             })();
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments)};
+            gtag('js', new Date());
+            gtag('config', TRACKING_CODE);
         </script>
         <?php
 
