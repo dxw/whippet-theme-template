@@ -1,9 +1,12 @@
 {
-  "devDependencies": {
+  "dependencies": {
     "jquery": "1.x.x",
     "bourbon": "^4.3.4",
     "bourbon-neat": "^2.0.0",
     "calc-polyfill": "^0.1.0",
+    "node-normalize-scss": "^3.0.0"
+  },
+  "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-browserify": "^5.0.0",
     "grunt-contrib-clean": "^1.0.0",
@@ -14,7 +17,6 @@
     "grunt-modernizr": "^1.0.2",
     "grunt-sass": "^1.2.0",
     "grunt-standard": "^2.0.0",
-    "grunt-svgmin": "^4.0.0",
-    "node-normalize-scss": "^3.0.0"
+    "grunt-svgmin": "^4.0.0"
   }
 }
