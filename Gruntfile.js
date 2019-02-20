@@ -1,6 +1,8 @@
 module.exports = function (grunt) {
   'use strict'
 
+  const sass = require('node-sass')
+
   grunt.loadNpmTasks('grunt-contrib-watch')
   grunt.loadNpmTasks('grunt-sass')
   grunt.loadNpmTasks('grunt-img')
@@ -25,6 +27,7 @@ module.exports = function (grunt) {
 
     sass: {
       options: {
+        implementation: sass,
         outputStyle: 'compressed',
         sourceMap: true,
         includePaths: [
@@ -131,7 +134,7 @@ module.exports = function (grunt) {
 
   // Hack to make `img` task work
   grunt.registerTask('img-mkdir', 'mkdir static/img', function () {
-    var fs = require('fs')
+    const fs = require('fs')
 
     fs.mkdirSync('static')
     fs.mkdirSync('static/img')
