@@ -132,7 +132,7 @@ module.exports = function (grunt) {
     }
   })
 
-  // Hack to make `img` task work
+    // Hack to make `img` task work
   grunt.registerTask('img-mkdir', 'mkdir static/img', function () {
     const fs = require('fs')
 
