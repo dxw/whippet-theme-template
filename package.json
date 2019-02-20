@@ -1,10 +1,10 @@
 {
   "dependencies": {
-    "bourbon": "^4.3.4",
-    "bourbon-neat": "^2.0.0",
+    "bourbon": "^5.1.0",
+    "bourbon-neat": "^3.0.1",
     "calc-polyfill": "^0.1.0",
     "jquery": "^3.3.1",
-    "node-normalize-scss": "^3.0.0",
+    "node-normalize-scss": "^8.0.0",
     "node-sass": "^4.11.0"
   },
   "devDependencies": {

@@ -369,13 +369,15 @@ boolbase@^1.0.0, boolbase@~1.0.0:
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
   integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
 
-bourbon-neat@^2.0.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/bourbon-neat/-/bourbon-neat-2.1.0.tgz#b32ce101f447c35c57b6e833de74567f8b5f9082"
+bourbon-neat@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/bourbon-neat/-/bourbon-neat-3.0.1.tgz#09f0d6d3c90655a108a1abb6c4ae765f2863d8da"
+  integrity sha512-UatucoVtJQdBTHRR7niNO6qMZynqJ+vNTLVyO/FRYu2xDw/kbgyB4Owbc0eJVziapbX0JEYNEt6JyBdgupRHBA==
 
-bourbon@^4.3.4:
-  version "4.3.4"
-  resolved "https://registry.yarnpkg.com/bourbon/-/bourbon-4.3.4.tgz#4da380029e92c0c8f9764c779451a134b11e7cc3"
+bourbon@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/bourbon/-/bourbon-5.1.0.tgz#84fa10de4c4e837602d8c2ec716d74bcb8915bad"
+  integrity sha512-rO4rwNAVNuzPmnL+DruxAe7DR2YFFo4nHsgDVRd9URMgDxtHmVBUnvFLXPan6teVe7jkybCyxcnR+CKClotj3g==
 
 brace-expansion@^1.1.7:
   version "1.1.11"
@@ -600,6 +602,7 @@ cached-path-relative@^1.0.0:
 calc-polyfill@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/calc-polyfill/-/calc-polyfill-0.1.0.tgz#9cf15f3dc1c3bfdee15979b8e0f69abe22b9cd42"
+  integrity sha1-nPFfPcHDv97hWXm44PaaviK5zUI=
 
 caller-path@^0.1.0:
   version "0.1.0"
@@ -2742,6 +2745,7 @@ isstream@~0.1.2:
 jquery@^3.3.1:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.3.1.tgz#958ce29e81c9790f31be7792df5d4d95fc57fbca"
+  integrity sha512-Ubldcmxp5np52/ENotGxlLe6aGMvmF4R8S6tZjsP6Knsaxd/xp3Zrh50cG93lR6nPXyUFwzN3ZSOQI0wRJNdGg==
 
 js-base64@^2.1.8:
   version "2.5.1"
@@ -3328,9 +3332,10 @@ node-gyp@^3.8.0:
     tar "^2.0.0"
     which "1"
 
-node-normalize-scss@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/node-normalize-scss/-/node-normalize-scss-3.0.0.tgz#119bf5d5bb71160465e9f1204c41f691d26ecf77"
+node-normalize-scss@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/node-normalize-scss/-/node-normalize-scss-8.0.0.tgz#b5be9c851cd9861266524a43a5bc83854506a7d6"
+  integrity sha512-eQMVmvs2Hj33v3m/jstZOBGOr0lO+Rr3tamGdZxBtiUbJ/WXywsLz/LhVQDSugxG4TEnfYyGxdfbRVKNxw+x7g==
 
 node-pre-gyp@^0.10.0:
   version "0.10.3"
