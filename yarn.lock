@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@dxw-digital/grunt-fingerprint@git+https://github.com/dxw/grunt-fingerprint.git":
+  version "0.1.0"
+  resolved "git+https://github.com/dxw/grunt-fingerprint.git#97772d0331c3c286c0afb4297c168d42353354e9"
+
 "@types/q@^1.5.1":
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.1.tgz#48fd98c1561fe718b61733daed46ff115b496e18"

@@ -13,6 +13,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy')
   grunt.loadNpmTasks('grunt-contrib-clean')
   grunt.loadNpmTasks('grunt-svgmin')
+  grunt.loadNpmTasks('@dxw-digital/grunt-fingerprint')
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -111,6 +112,18 @@ module.exports = function (grunt) {
       }
     },
 
+    fingerprint: {
+      production: {
+        options: {
+          json: 'static/fingerprint.json'
+        },
+        src: [
+          'static/*.min.css',
+          'static/*.min.js'
+        ]
+      }
+    },
+
     _watch: {
       less: {
         files: ['assets/scss/*.scss', 'assets/scss/*/*.scss'],
@@ -157,6 +170,7 @@ module.exports = function (grunt) {
     'copy',
     'browserify',
     'exorcise',
-    'modernizr'
+    'modernizr',
+    'fingerprint'
   ])
 }
