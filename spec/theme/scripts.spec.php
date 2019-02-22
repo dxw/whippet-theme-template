@@ -9,7 +9,8 @@ describe(\Dxw\MyTheme\Theme\Scripts::class, function () {
             },
         ]);
         $this->helpers = new \Dxw\Iguana\Theme\Helpers();
-        $this->scripts = new \Dxw\MyTheme\Theme\Scripts($this->helpers);
+        $this->fingerprint = \Mockery::mock(\Dxw\MyTheme\Theme\Fingerprint::class);
+        $this->scripts = new \Dxw\MyTheme\Theme\Scripts($this->helpers, $this->fingerprint);
     });
 
     afterEach(function () {
@@ -75,13 +76,16 @@ describe(\Dxw\MyTheme\Theme\Scripts::class, function () {
                 'times' => 1,
             ]);
 
+            $this->fingerprint->shouldReceive('get')->with('static/main.min.js')->andReturn('static/main-123abc.min.js');
+            $this->fingerprint->shouldReceive('get')->with('static/main.min.css')->andReturn('static/main-f00.min.css');
+
             \WP_Mock::wpFunction('wp_enqueue_script', [
-                'args' => ['main', 'http://a.invalid/static/main.min.js', ['jquery', 'modernizr'], '', true],
+                'args' => ['main', 'http://a.invalid/static/main-123abc.min.js', ['jquery', 'modernizr'], '', true],
                 'times' => 1,
             ]);
 
             \WP_Mock::wpFunction('wp_enqueue_style', [
-                'args' => ['main', 'http://a.invalid/static/main.min.css'],
+                'args' => ['main', 'http://a.invalid/static/main-f00.min.css'],
                 'times' => 1,
             ]);
 

@@ -1,6 +1,8 @@
 module.exports = function (grunt) {
   'use strict'
 
+  const sass = require('node-sass')
+
   grunt.loadNpmTasks('grunt-contrib-watch')
   grunt.loadNpmTasks('grunt-sass')
   grunt.loadNpmTasks('grunt-img')
@@ -11,6 +13,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy')
   grunt.loadNpmTasks('grunt-contrib-clean')
   grunt.loadNpmTasks('grunt-svgmin')
+  grunt.loadNpmTasks('@dxw-digital/grunt-fingerprint')
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -25,6 +28,7 @@ module.exports = function (grunt) {
 
     sass: {
       options: {
+        implementation: sass,
         outputStyle: 'compressed',
         sourceMap: true,
         includePaths: [
@@ -108,6 +112,18 @@ module.exports = function (grunt) {
       }
     },
 
+    fingerprint: {
+      production: {
+        options: {
+          json: 'static/fingerprint.json'
+        },
+        src: [
+          'static/*.min.css',
+          'static/*.min.js'
+        ]
+      }
+    },
+
     _watch: {
       less: {
         files: ['assets/scss/*.scss', 'assets/scss/*/*.scss'],
@@ -129,9 +145,9 @@ module.exports = function (grunt) {
     }
   })
 
-  // Hack to make `img` task work
+    // Hack to make `img` task work
   grunt.registerTask('img-mkdir', 'mkdir static/img', function () {
-    var fs = require('fs')
+    const fs = require('fs')
 
     fs.mkdirSync('static')
     fs.mkdirSync('static/img')
@@ -154,6 +170,7 @@ module.exports = function (grunt) {
     'copy',
     'browserify',
     'exorcise',
-    'modernizr'
+    'modernizr',
+    'fingerprint'
   ])
 }

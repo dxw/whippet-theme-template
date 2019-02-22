@@ -4,8 +4,10 @@ namespace Dxw\MyTheme\Theme;
 
 class Scripts implements \Dxw\Iguana\Registerable
 {
-    public function __construct(\Dxw\Iguana\Theme\Helpers $helpers)
+    public function __construct(\Dxw\Iguana\Theme\Helpers $helpers, \Dxw\MyTheme\Theme\Fingerprint $fingerprint)
     {
+        $this->fingerprint = $fingerprint;
+
         $helpers->registerFunction('assetPath', [$this, 'assetPath']);
         $helpers->registerFunction('getAssetPath', [$this, 'getAssetPath']);
     }
@@ -16,9 +18,14 @@ class Scripts implements \Dxw\Iguana\Registerable
         add_action('wp_print_scripts', [$this, 'wpPrintScripts']);
     }
 
+    private function getPath($path)
+    {
+        return dirname(get_stylesheet_directory_uri()).'/'.$path;
+    }
+
     public function getAssetPath($path)
     {
-        return dirname(get_stylesheet_directory_uri()).'/static/'.$path;
+        return $this->getPath('static/'.$path);
     }
 
     public function assetPath($path)
@@ -46,9 +53,9 @@ class Scripts implements \Dxw\Iguana\Registerable
         wp_enqueue_script('modernizr', $this->getAssetPath('lib/modernizr.min.js'));
 
         // Pretty much everything else should be compiled by Grunt.
-        wp_enqueue_script('main',      $this->getAssetPath('main.min.js'), array('jquery', 'modernizr'), '', true);
+        wp_enqueue_script('main',      $this->getPath($this->fingerprint->get('static/main.min.js')), array('jquery', 'modernizr'), '', true);
 
-        wp_enqueue_style('main',      $this->getAssetPath('main.min.css'));
+        wp_enqueue_style('main',      $this->getPath($this->fingerprint->get('static/main.min.css')));
     }
 
     public function wpPrintScripts()
