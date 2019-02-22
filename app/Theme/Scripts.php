@@ -4,9 +4,9 @@ namespace Dxw\MyTheme\Theme;
 
 class Scripts implements \Dxw\Iguana\Registerable
 {
-    public function __construct(\Dxw\Iguana\Theme\Helpers $helpers)
+    public function __construct(\Dxw\Iguana\Theme\Helpers $helpers, \Dxw\MyTheme\Theme\Fingerprint $fingerprint)
     {
-        $this->rewrittenFiles = json_decode(file_get_contents(__DIR__.'/../../static/fingerprint.json'), true)['rewrittenFiles'];
+        $this->fingerprint = $fingerprint;
 
         $helpers->registerFunction('assetPath', [$this, 'assetPath']);
         $helpers->registerFunction('getAssetPath', [$this, 'getAssetPath']);
@@ -53,9 +53,9 @@ class Scripts implements \Dxw\Iguana\Registerable
         wp_enqueue_script('modernizr', $this->getAssetPath('lib/modernizr.min.js'));
 
         // Pretty much everything else should be compiled by Grunt.
-        wp_enqueue_script('main',      $this->getPath($this->rewrittenFiles['static/main.min.js']), array('jquery', 'modernizr'), '', true);
+        wp_enqueue_script('main',      $this->getPath($this->fingerprint->get('static/main.min.js')), array('jquery', 'modernizr'), '', true);
 
-        wp_enqueue_style('main',      $this->getPath($this->rewrittenFiles['static/main.min.css']));
+        wp_enqueue_style('main',      $this->getPath($this->fingerprint->get('static/main.min.css')));
     }
 
     public function wpPrintScripts()
