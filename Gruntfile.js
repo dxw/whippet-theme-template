@@ -9,7 +9,6 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-exorcise')
   grunt.loadNpmTasks('grunt-contrib-copy')
   grunt.loadNpmTasks('grunt-contrib-clean')
-  grunt.loadNpmTasks('grunt-svgmin')
   grunt.loadNpmTasks('grunt-image')
 
   const sass = require('node-sass')
@@ -101,20 +100,6 @@ module.exports = function (grunt) {
       }
     },
 
-    svgmin: {
-      options: {},
-      dist: {
-        files: [
-          {
-            expand: true,
-            cwd: 'assets/img/',
-            src: ['*.svg'],
-            dest: 'static/img/'
-          }
-        ]
-      }
-    },
-
     _watch: {
       less: {
         files: ['assets/scss/*.scss', 'assets/scss/*/*.scss'],
@@ -136,14 +121,6 @@ module.exports = function (grunt) {
     }
   })
 
-  // Hack to make `img` task work
-  grunt.registerTask('img-mkdir', 'mkdir static/img', function () {
-    var fs = require('fs')
-
-    fs.mkdirSync('static')
-    fs.mkdirSync('static/img')
-  })
-
   grunt.renameTask('watch', '_watch')
 
   grunt.registerTask('watch', [
@@ -153,9 +130,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('default', [
     'clean',
-    'img-mkdir',
     'image',
-    'svgmin',
     'sass',
     'standard',
     'copy',

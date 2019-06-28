@@ -18,7 +18,6 @@
     "grunt-modernizr": "^1.0.2",
     "grunt-sass": "^3.0.0",
     "grunt-standard": "^2.0.0",
-    "grunt-svgmin": "^4.0.0",
     "node-sass": "^4.12.0"
   }
 }
