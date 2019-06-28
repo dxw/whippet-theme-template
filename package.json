@@ -16,8 +16,9 @@
     "grunt-exorcise": "^2.1.1",
     "grunt-img": "~0.1.8",
     "grunt-modernizr": "^1.0.2",
-    "grunt-sass": "^1.2.0",
+    "grunt-sass": "^3.0.0",
     "grunt-standard": "^2.0.0",
-    "grunt-svgmin": "^4.0.0"
+    "grunt-svgmin": "^4.0.0",
+    "node-sass": "^4.12.0"
   }
 }

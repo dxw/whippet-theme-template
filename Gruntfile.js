@@ -12,6 +12,8 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean')
   grunt.loadNpmTasks('grunt-svgmin')
 
+  const sass = require('node-sass')
+
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
@@ -25,6 +27,7 @@ module.exports = function (grunt) {
 
     sass: {
       options: {
+        implementation: sass,
         outputStyle: 'compressed',
         sourceMap: true,
         includePaths: [
