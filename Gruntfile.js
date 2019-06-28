@@ -3,7 +3,6 @@ module.exports = function (grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-watch')
   grunt.loadNpmTasks('grunt-sass')
-  grunt.loadNpmTasks('grunt-img')
   grunt.loadNpmTasks('grunt-standard')
   grunt.loadNpmTasks('grunt-modernizr')
   grunt.loadNpmTasks('grunt-browserify')
@@ -11,6 +10,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy')
   grunt.loadNpmTasks('grunt-contrib-clean')
   grunt.loadNpmTasks('grunt-svgmin')
+  grunt.loadNpmTasks('grunt-image')
 
   const sass = require('node-sass')
 
@@ -90,10 +90,14 @@ module.exports = function (grunt) {
       }
     },
 
-    img: {
-      dist: {
-        src: 'assets/img',
-        dest: 'static/img'
+    image: {
+      dynamic: {
+        files: [{
+          expand: true,
+          cwd: 'assets/img',
+          src: ['**/*.{png,jpg,gif,svg}'],
+          dest: 'static/img'
+        }]
       }
     },
 
@@ -150,7 +154,7 @@ module.exports = function (grunt) {
   grunt.registerTask('default', [
     'clean',
     'img-mkdir',
-    'img',
+    'image',
     'svgmin',
     'sass',
     'standard',
