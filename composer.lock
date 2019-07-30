@@ -1,10 +1,9 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "hash": "00f695af7572b902b21ea3d0d87341ae",
     "content-hash": "245fcba2138c405c79413ca3662f7e64",
     "packages": [
         {
@@ -54,29 +53,30 @@
                 "autoloader",
                 "class loader"
             ],
-            "time": "2016-10-03 19:36:19"
+            "time": "2016-10-03T19:36:19+00:00"
         },
         {
             "name": "dxw/iguana",
-            "version": "v1.1.0",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dxw/iguana.git",
-                "reference": "bbbcc299a316400724c09a7bfec24cae3305d32d"
+                "reference": "5a9fb4244a512315d75458cd42b19343f52623f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dxw/iguana/zipball/bbbcc299a316400724c09a7bfec24cae3305d32d",
-                "reference": "bbbcc299a316400724c09a7bfec24cae3305d32d",
+                "url": "https://api.github.com/repos/dxw/iguana/zipball/5a9fb4244a512315d75458cd42b19343f52623f9",
+                "reference": "5a9fb4244a512315d75458cd42b19343f52623f9",
                 "shasum": ""
             },
             "require": {
                 "aura/autoload": "^2.0"
             },
             "require-dev": {
-                "10up/wp_mock": "^0.1.1",
+                "10up/wp_mock": "^0.3.0",
+                "friendsofphp/php-cs-fixer": "^2.13",
                 "mikey179/vfsstream": "^1.6",
-                "phpunit/phpunit": "4.8.*"
+                "phpunit/phpunit": "^6.5"
             },
             "type": "library",
             "autoload": {
@@ -89,7 +89,7 @@
                 "MIT"
             ],
             "homepage": "https://github.com/dxw/iguana",
-            "time": "2016-07-08 19:48:23"
+            "time": "2018-09-28T13:16:07+00:00"
         },
         {
             "name": "dxw/iguana-extras",
@@ -123,7 +123,7 @@
                 "MIT"
             ],
             "homepage": "https://github.com/dxw/iguana-extras",
-            "time": "2016-05-23 18:22:48"
+            "time": "2016-05-23T18:22:48+00:00"
         },
         {
             "name": "dxw/iguana-theme",
@@ -158,7 +158,7 @@
                 "MIT"
             ],
             "homepage": "https://github.com/dxw/iguana-theme",
-            "time": "2016-05-23 18:24:32"
+            "time": "2016-05-23T18:24:32+00:00"
         },
         {
             "name": "dxw/pagination",
@@ -196,7 +196,7 @@
             ],
             "description": "Unit-tested framework-agnostic pagination that works with Bootstrap and Foundation",
             "homepage": "https://github.com/dxw/pagination",
-            "time": "2016-07-15 13:07:32"
+            "time": "2016-07-15T13:07:32+00:00"
         }
     ],
     "packages-dev": [
@@ -236,7 +236,7 @@
                 "GPL-2.0+"
             ],
             "description": "A mocking library to take the pain out of unit testing for WordPress",
-            "time": "2015-03-31 18:55:45"
+            "time": "2015-03-31T18:55:45+00:00"
         },
         {
             "name": "antecedent/patchwork",
@@ -276,7 +276,7 @@
                 "runkit",
                 "testing"
             ],
-            "time": "2016-07-02 04:25:33"
+            "time": "2016-07-02T04:25:33+00:00"
         },
         {
             "name": "dxw/phar-install",
@@ -308,7 +308,7 @@
                 }
             ],
             "homepage": "https://github.com/dxw/phar-install",
-            "time": "2016-02-17 13:55:06"
+            "time": "2016-02-17T13:55:06+00:00"
         },
         {
             "name": "evenement/evenement",
@@ -354,7 +354,7 @@
                 "event-dispatcher",
                 "event-emitter"
             ],
-            "time": "2012-11-02 14:49:47"
+            "time": "2012-11-02T14:49:47+00:00"
         },
         {
             "name": "friendsofphp/php-cs-fixer",
@@ -408,7 +408,7 @@
                 }
             ],
             "description": "A tool to automatically fix PHP code style",
-            "time": "2016-06-07 07:51:27"
+            "time": "2016-06-07T07:51:27+00:00"
         },
         {
             "name": "hamcrest/hamcrest-php",
@@ -453,19 +453,19 @@
             "keywords": [
                 "test"
             ],
-            "time": "2015-05-11 14:41:42"
+            "time": "2015-05-11T14:41:42+00:00"
         },
         {
-            "name": "mikey179/vfsStream",
+            "name": "mikey179/vfsstream",
             "version": "v1.6.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/mikey179/vfsStream.git",
+                "url": "https://github.com/bovigo/vfsStream.git",
                 "reference": "0247f57b2245e8ad2e689d7cee754b45fbabd592"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mikey179/vfsStream/zipball/0247f57b2245e8ad2e689d7cee754b45fbabd592",
+                "url": "https://api.github.com/repos/bovigo/vfsStream/zipball/0247f57b2245e8ad2e689d7cee754b45fbabd592",
                 "reference": "0247f57b2245e8ad2e689d7cee754b45fbabd592",
                 "shasum": ""
             },
@@ -493,13 +493,13 @@
             "authors": [
                 {
                     "name": "Frank Kleine",
-                    "homepage": "http://frankkleine.de/",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "homepage": "http://frankkleine.de/"
                 }
             ],
             "description": "Virtual file system to mock the real file system in unit tests.",
             "homepage": "http://vfs.bovigo.org/",
-            "time": "2016-07-18 14:02:57"
+            "time": "2016-07-18T14:02:57+00:00"
         },
         {
             "name": "mockery/mockery",
@@ -564,7 +564,7 @@
                 "test double",
                 "testing"
             ],
-            "time": "2017-02-28 12:52:32"
+            "time": "2017-02-28T12:52:32+00:00"
         },
         {
             "name": "peridot-php/leo",
@@ -616,7 +616,7 @@
                 "matcher",
                 "testing"
             ],
-            "time": "2016-09-21 03:52:31"
+            "time": "2016-09-21T03:52:31+00:00"
         },
         {
             "name": "peridot-php/peridot",
@@ -673,7 +673,7 @@
                 "php",
                 "testing"
             ],
-            "time": "2017-01-19 01:11:09"
+            "time": "2017-01-19T01:11:09+00:00"
         },
         {
             "name": "peridot-php/peridot-dot-reporter",
@@ -712,7 +712,7 @@
                 }
             ],
             "description": "A dot reporter for the Peridot testing framework",
-            "time": "2014-11-11 03:40:46"
+            "time": "2014-11-11T03:40:46+00:00"
         },
         {
             "name": "peridot-php/peridot-scope",
@@ -751,7 +751,7 @@
                 }
             ],
             "description": "Scopes for function binding and mixins",
-            "time": "2016-02-22 13:27:54"
+            "time": "2016-02-22T13:27:54+00:00"
         },
         {
             "name": "phpunit/php-timer",
@@ -800,7 +800,7 @@
             "keywords": [
                 "timer"
             ],
-            "time": "2017-02-26 11:10:40"
+            "time": "2017-02-26T11:10:40+00:00"
         },
         {
             "name": "psr/log",
@@ -847,7 +847,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2016-10-10 12:19:37"
+            "time": "2016-10-10T12:19:37+00:00"
         },
         {
             "name": "sebastian/diff",
@@ -899,7 +899,7 @@
             "keywords": [
                 "diff"
             ],
-            "time": "2017-05-22 07:24:03"
+            "time": "2017-05-22T07:24:03+00:00"
         },
         {
             "name": "symfony/console",
@@ -967,7 +967,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2017-05-28 14:08:56"
+            "time": "2017-05-28T14:08:56+00:00"
         },
         {
             "name": "symfony/debug",
@@ -1023,7 +1023,7 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
-            "time": "2017-05-27 16:02:27"
+            "time": "2017-05-27T16:02:27+00:00"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -1086,7 +1086,7 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2017-05-04 12:23:07"
+            "time": "2017-05-04T12:23:07+00:00"
         },
         {
             "name": "symfony/filesystem",
@@ -1135,7 +1135,7 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2017-05-28 14:08:56"
+            "time": "2017-05-28T14:08:56+00:00"
         },
         {
             "name": "symfony/finder",
@@ -1184,7 +1184,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2017-05-25 23:10:31"
+            "time": "2017-05-25T23:10:31+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -1243,7 +1243,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2016-11-14 01:06:16"
+            "time": "2016-11-14T01:06:16+00:00"
         },
         {
             "name": "symfony/process",
@@ -1292,7 +1292,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-            "time": "2017-05-22 12:32:03"
+            "time": "2017-05-22T12:32:03+00:00"
         },
         {
             "name": "symfony/stopwatch",
@@ -1341,7 +1341,7 @@
             ],
             "description": "Symfony Stopwatch Component",
             "homepage": "https://symfony.com",
-            "time": "2017-04-12 14:14:56"
+            "time": "2017-04-12T14:14:56+00:00"
         }
     ],
     "aliases": [],
