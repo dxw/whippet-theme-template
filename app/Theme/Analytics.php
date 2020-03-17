@@ -28,6 +28,5 @@ class Analytics implements \Dxw\Iguana\Registerable
             gtag('config', TRACKING_CODE);
         </script>
         <?php
-
     }
 }
