@@ -3890,10 +3890,10 @@ node-gyp@^3.8.0:
     tar "^2.0.0"
     which "1"
 
-node-normalize-scss@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/node-normalize-scss/-/node-normalize-scss-3.0.0.tgz#119bf5d5bb71160465e9f1204c41f691d26ecf77"
-  integrity sha1-EZv11btxFgRl6fEgTEH2kdJuz3c=
+node-normalize-scss@^8.0.1:
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/node-normalize-scss/-/node-normalize-scss-8.0.1.tgz#006cd8da0fd7a4ca859d936ae7f6a6a6a00cf5d6"
+  integrity sha512-viPhFNDOuHAHxW8J0Yk4qfT4YWO7y21fpjQGRK9hM9jYKeQR2wdw3ughQnCW4roz5cCNSdJZccfRZOXj83PEcg==
 
 node-sass@^4.14.0:
   version "4.14.0"
