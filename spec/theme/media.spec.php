@@ -17,18 +17,13 @@ describe(\Dxw\MyTheme\Theme\Media::class, function () {
     describe('->register()', function () {
         it('registers thumbnail sizes', function () {
             \WP_Mock::wpFunction('set_post_thumbnail_size', [
-                'args' => [150, 150, true],
+                'args' => [\WP_Mock\Functions::type('int'), \WP_Mock\Functions::type('int'), \WP_Mock\Functions::type('bool')],
                 'times' => 1
             ]);
 
             \WP_Mock::wpFunction('add_image_size', [
-                'args' => ['medium', 200, 200, true],
-                'times' => 1
-            ]);
-
-            \WP_Mock::wpFunction('add_image_size', [
-                'args' => ['large', 800, 300, true],
-                'times' => 1
+                'args' => [\WP_Mock\Functions::type('string'), \WP_Mock\Functions::type('int'), \WP_Mock\Functions::type('int'), \WP_Mock\Functions::type('bool')],
+                'times' => 2
             ]);
 
             $this->media->register();

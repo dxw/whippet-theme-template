@@ -17,13 +17,8 @@ describe(\Dxw\MyTheme\Theme\Menus::class, function () {
     describe('->register()', function () {
         it('registers nav menus', function () {
             \WP_Mock::wpFunction('register_nav_menu', [
-                'args' => ['header', 'Header Menu'],
-                'times' => 1
-            ]);
-
-            \WP_Mock::wpFunction('register_nav_menu', [
-                'args' => ['footer', 'Footer Menu'],
-                'times' => 1
+                'args' => [\WP_Mock\Functions::type('string'), \WP_Mock\Functions::type('string')],
+                'times' => 2
             ]);
 
             $this->menus->register();

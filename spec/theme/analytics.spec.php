@@ -22,29 +22,13 @@ describe(\Dxw\MyTheme\Theme\Analytics::class, function () {
     });
 
     describe('->wpFooter()', function () {
-        it('adds HTML to the footer', function () {
+        it('adds a script tag to the footer', function () {
             ob_start();
             $this->analytics->wpFooter();
             $result = ob_get_contents();
             ob_end_clean();
-            expect($result)->to->be->equal(implode("\n", [
-                '        <script>',
-                "            var TRACKING_CODE = ''; //Put the Google Analytics tracking code here",
-                '            if (!TRACKING_CODE.length) {',
-                "                console.warn('Google Analytics requires a tracking code to function correctly');",
-                "            }",
-                '            (function() {',
-                "                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;",
-                "                ga.src = 'https://www.googletagmanager.com/gtag/js?id=' + TRACKING_CODE;",
-                "                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);",
-                "            })();",
-                '            window.dataLayer = window.dataLayer || [];',
-                '            function gtag(){dataLayer.push(arguments)};',
-                "            gtag('js', new Date());",
-                "            gtag('config', TRACKING_CODE);",
-                "        </script>",
-                '        ',
-            ]));
+            $result = str_replace(["\r", "\n"], '', $result);
+            expect(preg_match('/^\s*<script>.*<\\/script>\s*$/', $result))->to->equal(1);
         });
     });
 });
