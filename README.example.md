@@ -21,7 +21,7 @@ Please use `master/develop` branches
 
 ## Development
 
-[`whippet`](https://github.com/dxw/whippet) and/or [`whippet-server`](https://github.com/dxw/whippet-server)
+[`wpc`](https://github.com/dxw/wpc)
 
 ## Set up checklist
 

@@ -38,11 +38,11 @@ Run PHP tests:
 
 Build JS/CSS:
 
-    grunt
+    yarn run grunt
 
 Build JS/CSS upon file modification:
 
-    grunt watch
+    yarn run grunt watch
 
 ## Guide
 
