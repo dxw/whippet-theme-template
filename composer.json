@@ -2,7 +2,7 @@
     "name": "dxw/whippet-theme-template",
     "homepage": "https://github.com/dxw/whippet-theme-template",
     "type": "library",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "license": "MIT",
     "authors": [
         {
@@ -18,7 +18,7 @@
     },
     "require-dev": {
         "dxw/phar-install": "^1.0",
-        "10up/wp_mock": "^0.1.1",
+        "10up/wp_mock": "^0.3.0",
         "mikey179/vfsstream": "^1.6",
         "peridot-php/peridot": "^1.19",
         "peridot-php/leo": "^1.6",

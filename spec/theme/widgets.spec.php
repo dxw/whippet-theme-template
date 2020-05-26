@@ -30,28 +30,10 @@ describe(\Dxw\MyTheme\Theme\Widgets::class, function () {
             ]);
 
             \WP_Mock::wpFunction('register_sidebar', [
-                'args' => [[
-                    'name' => __('Primary'),
-                    'id' => 'sidebar-primary',
-                    'before_widget' => '<section class="widget %1$s %2$s">',
-                    'after_widget' => '</section>',
-                    'before_title' => '<h3>',
-                    'after_title' => '</h3>',
-                ]],
-                'times' => 1,
+                'args' => [\WP_Mock\Functions::type('array')],
+                'times' => 2,
             ]);
 
-            \WP_Mock::wpFunction('register_sidebar', [
-                'args' => [[
-                    'name' => __('Footer'),
-                    'id' => 'sidebar-footer',
-                    'before_widget' => '<section class="widget %1$s %2$s">',
-                    'after_widget' => '</section>',
-                    'before_title' => '<h3>',
-                    'after_title' => '</h3>',
-                ]],
-                'times' => 1,
-            ]);
             $this->widgets->widgetsInit();
         });
     });

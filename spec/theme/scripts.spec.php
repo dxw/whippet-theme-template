@@ -99,14 +99,8 @@ describe(\Dxw\MyTheme\Theme\Scripts::class, function () {
             $this->scripts->wpPrintScripts();
             $result = ob_get_contents();
             ob_end_clean();
-            expect($result)->to->be->equal(implode("\n", [
-                '        <meta name="viewport" content="width=device-width, initial-scale=1.0">',
-                '',
-                '        <link rel="apple-touch-icon-precomposed" href="_http://a.invalid/static/img/apple-touch-icon-precomposed.png_">',
-                '',
-                '        <link rel="icon" type="image/png" href="_http://a.invalid/static/img/shortcut-icon.png_">',
-                '        ',
-            ]));
+            expect(preg_match_all("/<meta .*>/", $result))->to->equal(1);
+            expect(preg_match_all("/<link .*>/", $result))->to->equal(2);
         });
     });
 });
