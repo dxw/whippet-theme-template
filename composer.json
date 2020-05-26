@@ -23,7 +23,7 @@
         "peridot-php/peridot": "^1.19",
         "peridot-php/leo": "^1.6",
         "peridot-php/peridot-dot-reporter": "^1.0",
-        "friendsofphp/php-cs-fixer": "1.11.4"
+        "friendsofphp/php-cs-fixer": "2.16.3"
     },
     "autoload": {
         "psr-4": {
