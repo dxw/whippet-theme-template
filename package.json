@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "bourbon": "^4.3.4",
+    "bourbon": "^7.0.0",
     "bourbon-neat": "^2.0.0",
     "calc-polyfill": "^0.1.0",
     "jquery": "^3.3.1",
